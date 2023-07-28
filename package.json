@@ -9,7 +9,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "eslint": "eslint . --ext .js,.jsx,.ts,.tsx,.vue --fix"
+    "eslint": "eslint . --ext .js,.jsx,.ts,.tsx,.vue --fix",
+    "prepare": "husky install",
+    "pre-commit": "echo \"[Husky] pre-commit\""
   },
   "husky": {
     "hooks": {

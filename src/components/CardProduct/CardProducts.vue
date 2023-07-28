@@ -20,7 +20,7 @@ export default {};
                 <div class="flex space-x-2 items-center">
                   <p class="text-base font-600 text-qblack">View More</p>
                   <span class="animate-right-dir">
-                    <i class="fa-solid fa-arrow-right"></i>
+                    <i class="fa-solid fa-arrow-right" />
                   </span>
                 </div>
               </a>
@@ -58,8 +58,7 @@ export default {};
                           class="bg-yellow-500 w-full py-2 px-4 rounded-lg"
                         >
                           <div class="flex items-center space-x-3">
-                            <span>
-                              <i class="fa-solid fa-bag-shopping"></i> </span
+                            <span> <i class="fa-solid fa-bag-shopping" /> </span
                             ><span>Add To Cart</span>
                           </div>
                         </button>
@@ -68,22 +67,13 @@ export default {};
                       <!-- Reviews -->
                       <div class="reviews flex space-x-[1px] mb-3">
                         <span>
-                          <i
-                            class="fa-solid fa-star"
-                            style="color: #ffa800"
-                          ></i>
+                          <i class="fa-solid fa-star" style="color: #ffa800" />
                         </span>
                         <span>
-                          <i
-                            class="fa-solid fa-star"
-                            style="color: #ffa800"
-                          ></i>
+                          <i class="fa-solid fa-star" style="color: #ffa800" />
                         </span>
                         <span>
-                          <i
-                            class="fa-solid fa-star"
-                            style="color: #ffa800"
-                          ></i>
+                          <i class="fa-solid fa-star" style="color: #ffa800" />
                         </span>
                       </div>
 
@@ -113,20 +103,20 @@ export default {};
                         <span
                           class="w-10 h-10 flex justify-center items-center bg-primarygray rounded"
                         >
-                          <i class="fa-solid fa-expand"></i> </span
+                          <i class="fa-solid fa-expand" /> </span
                       ></a>
 
                       <a href="https://shopo-next.vercel.app/#"
                         ><span
                           class="w-10 h-10 flex justify-center items-center bg-primarygray rounded"
                         >
-                          <i class="fa-regular fa-heart"></i> </span
+                          <i class="fa-regular fa-heart" /> </span
                       ></a>
                       <a href="https://shopo-next.vercel.app/#"
                         ><span
                           class="w-10 h-10 flex justify-center items-center bg-primarygray rounded"
                         >
-                          <i class="fa-solid fa-arrows-rotate"></i> </span
+                          <i class="fa-solid fa-arrows-rotate" /> </span
                       ></a>
                     </div>
                   </div>
@@ -139,5 +129,3 @@ export default {};
     </div>
   </section>
 </template>
-
-<style></style>

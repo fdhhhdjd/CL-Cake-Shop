@@ -33,7 +33,7 @@ module.exports = {
     'max-len': 'off',
 
     // we don't want it
-    semi: off,
+    semi: 'off',
 
     'no-unused-vars': 'off',
     'no-undef': 'off',

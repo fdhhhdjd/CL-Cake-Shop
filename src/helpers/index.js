@@ -7,7 +7,7 @@ import { storeKey } from '../providers/storePlugin';
 
 export const useDispatch = () => store.dispatch;
 
-export const useSelector = (fn) => {
+export const useSelector = fn => {
   const rootStore = inject(storeKey);
 
   return computed(() => fn(rootStore.state));

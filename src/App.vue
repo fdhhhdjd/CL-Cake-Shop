@@ -6,4 +6,4 @@ import ProductsVue from './pages/products/index.vue';
   <ProductsVue />
 </template>
 
-<style scoped></style>
+<!-- <style scoped></style> -->

@@ -2,21 +2,19 @@
 import { useDispatch } from '../helpers'
 import { getAllProductInitial } from '../providers/redux/product/product_thunk'
 
+defineProps({
+  msg: String,
+})
+
 const dispatch = useDispatch()
 
 dispatch(getAllProductInitial())
 
 
-defineProps({
-  msg: String,
-})
-
 </script>
 
 <template>
   <h1>{{ msg }}</h1>
-
-
 </template>
 
 <style scoped>

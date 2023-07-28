@@ -9,7 +9,8 @@ default:
 
 # Install --dev dependencies
 run-install-dev:
-	npm install --dev
+	npm install --save-dev
+	git config advice.ignoredHook false
 	chmod +x .husky/pre-commit .husky/commit-msg
 
 # Install dependencies
@@ -20,7 +21,7 @@ run-install:
 run-dev:
 	npm run dev
 
-# Run all Source 
+# Run all Source
 run-all:
 	make run-install-dev
 	make run-install
@@ -32,4 +33,4 @@ run-all:
 run-build:
 	npm run build
 
-	
+

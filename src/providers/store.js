@@ -25,12 +25,13 @@ const store = configureStore({
 
   // Configure middleware for the store.
   middleware:
+
     // Check if the environment is not production (node_dev !== NODE.PRO).
     node_dev !== NODE.PRO
       ? // If not in production, add the "logger" middleware to log actions and state changes.
-        (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
+      getDefaultMiddleware => getDefaultMiddleware().concat(logger)
       : // If in production, use the default middleware without the "logger".
-        (getDefaultMiddleware) => getDefaultMiddleware(),
+      getDefaultMiddleware => getDefaultMiddleware(),
 
   // Enable or disable Redux DevTools extension based on the environment.
   devTools: node_dev !== NODE.PRO,

@@ -20,5 +20,3 @@ dispatch(getAllProductInitial());
   <HeaderVue />
   <CardProductsVue />
 </template>
-
-<style scoped></style>
