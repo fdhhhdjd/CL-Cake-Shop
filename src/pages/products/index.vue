@@ -1,6 +1,7 @@
 <script setup>
 //* HELPER
-import { useDispatch } from '../../helpers';
+
+import { useDispatch, useSelector } from '../../helpers';
 
 //* HEADER
 import HeaderVue from '../../layouts/header/Header.vue';
@@ -13,6 +14,7 @@ import { getAllProductInitial } from '../../providers/redux/product/product_thun
 
 const dispatch = useDispatch();
 
+// Get all products
 dispatch(getAllProductInitial());
 </script>
 

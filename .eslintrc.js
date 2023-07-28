@@ -66,6 +66,14 @@ module.exports = {
     'array-bracket-newline': ['error', 'consistent'],
 
     'vue/multi-word-component-names': 'off',
+    'comma-dangle': 'off',
+    'arrow-parens': 'off',
+    'lines-around-comment': 'off',
+    'vue/html-self-closing': 'off',
+    'vue/html-closing-bracket-newline': 'off',
+    'vue/max-attributes-per-line': 'off',
+    'vue/max-attributes-per-line': 'off',
+    'vue/html-indent': 'off',
 
     'padding-line-between-statements': [
       'error',
@@ -115,7 +123,7 @@ module.exports = {
     'vue/html-comment-content-newline': 'error',
     'vue/html-comment-content-spacing': 'error',
     'vue/html-comment-indent': 'error',
-    'vue/html-indent': ['error', 2],
+    // 'vue/html-indent': ['error', 2],
     'vue/match-component-file-name': 'error',
     'vue/no-child-content': 'error',
 

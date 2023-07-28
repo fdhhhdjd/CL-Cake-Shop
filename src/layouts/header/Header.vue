@@ -9,8 +9,7 @@
             <!-- Logo -->
             <div class="cursor-pointer">
               <img
-                width="152"
-                height="36"
+                class="w-[110px]"
                 src="../../assets/logo/logo.png"
                 alt="logo"
               >
@@ -158,8 +157,7 @@
         </div>
         <div class="cursor-pointer">
           <img
-            width="152"
-            height="36"
+            class="w-[80px]"
             src="../../assets/logo/logo.png"
             alt="logo"
           >

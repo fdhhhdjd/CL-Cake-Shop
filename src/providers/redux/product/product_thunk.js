@@ -16,5 +16,5 @@ export const getAllProductInitial = createAsyncThunk(
         return rejectWithValue(error);
       }
     }
-  },
+  }
 );

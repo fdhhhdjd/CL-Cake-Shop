@@ -1,5 +1,7 @@
-<script>
-export default {};
+<script setup>
+import { useSelector } from '../../helpers';
+
+const resultProduct = useSelector((state) => state.products);
 </script>
 
 <template>
@@ -9,9 +11,7 @@ export default {};
         <div class="container-x mx-auto">
           <div class="section-title flex justify-between items-center mb-5">
             <div>
-              <h1
-                class="sm:text-3xl text-xl font-600 text-qblacktext leading-none"
-              >
+              <h1 class="sm:text-3xl text-xl font-600 text-qblacktext leading-none">
                 List Products
               </h1>
             </div>
@@ -34,29 +34,31 @@ export default {};
                 class="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5"
               >
                 <!-- Card Product -->
-                <div data-aos="fade-up" class="item aos-init aos-animate">
+                <div
+                  v-for="product in resultProduct.products"
+                  :key="product.id"
+                  data-aos="fade-up"
+                  class="item aos-init aos-animate"
+                >
                   <div
                     class="product-card-one w-full h-full bg-white relative group overflow-hidden"
                     style="box-shadow: 0px 15px 64px 0px rgba(0, 0, 0, 0.05)"
                   >
                     <!-- Card Image -->
-                    <div
-                      class="product-card-img w-full h-[300px] bg-cover bg-center shadow-lg rounded-lg"
-                    >
-                      <img src="../../assets/img/4.jpg" alt="" />
+                    <div class="product-card-img w-full h-[300px]">
+                      <img
+                        :src="product.image_url"
+                        alt=""
+                        class="bg-image bg-center bg-no-repeat"
+                      />
                     </div>
 
                     <!-- Card content -->
-                    <div
-                      class="product-card-details px-[30px] pb-[30px] relative"
-                    >
+                    <div class="product-card-details px-[30px] pb-[30px] relative">
                       <div
                         class="absolute w-full h-10 px-[30px] left-0 top-40 group-hover:top-[85px] transition-all duration-300 ease-in-out"
                       >
-                        <button
-                          type="button"
-                          class="bg-yellow-500 w-full py-2 px-4 rounded-lg"
-                        >
+                        <button type="button" class="bg-yellow-500 w-full py-2 px-4 rounded-lg">
                           <div class="flex items-center space-x-3">
                             <span> <i class="fa-solid fa-bag-shopping" /> </span
                             ><span>Add To Cart</span>
@@ -82,18 +84,17 @@ export default {};
                         <p
                           class="title mb-2 text-[15px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-qyellow cursor-pointer"
                         >
-                          Xoggle aute et pariatur adipisicing nostrud et
-                          excepteur
+                          {{ product.description }}
                         </p>
                       </a>
                       <p class="price">
                         <span
-                          class="main-price text-qgray line-through font-600 text-[18px]"
-                          >$27.27</span
-                        ><span
-                          class="offer-price text-qred font-600 text-[18px] ml-2"
-                          >$18.73</span
-                        >
+                          :class="product.discounted_price ? 'line-through' : ''"
+                          class="main-price text-qgray font-600 text-[18px]"
+                          >{{ product.original_price }}</span
+                        ><span class="offer-price text-qred font-600 text-[18px] ml-2">{{
+                          product.discounted_price ? product.discounted_price : ''
+                        }}</span>
                       </p>
                     </div>
                     <div
