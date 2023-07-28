@@ -1,5 +1,14 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+//* LIBRARY
+import { createApp } from 'vue';
 
-createApp(App).mount('#app')
+//* IMPORT CSS GLOBAL
+import './index.css';
+
+//* IMPORT FILE MAIN VUE
+import App from './App.vue';
+
+//* STORE REDUX
+import { createRedux } from './providers/storePlugin';
+import store from './providers/store';
+
+createApp(App).use(createRedux(store)).mount('#app');
