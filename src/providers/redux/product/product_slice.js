@@ -28,6 +28,7 @@ const Products = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+
     //* Get Detail products
     [getDetailProductInitial.pending]: (state, action) => {
       state.loading = true;

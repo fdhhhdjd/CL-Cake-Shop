@@ -1,12 +1,13 @@
 <script setup>
-// LIBRARY
-import { RouterLink } from 'vue-router';
-
 // HELPERS
 import { useDispatch, useSelector } from '../../helpers';
 
 // PROVIDER
 import { deleteToCart } from '../../providers/redux/cart/cart_thunk';
+import { getDetailProductInitial } from '../../providers/redux/product/product_thunk';
+
+// LAYOUT
+import MenuVue from '../Menu/index.vue';
 
 const dispatch = useDispatch();
 
@@ -14,6 +15,11 @@ const storeCart = useSelector((state) => state.carts);
 
 const handleDeleteCart = (id) => {
   dispatch(deleteToCart({ productId: id }));
+};
+
+// Handle detail products
+const handleProductClick = (id) => {
+  dispatch(getDetailProductInitial({ id }));
 };
 </script>
 
@@ -24,43 +30,13 @@ const handleDeleteCart = (id) => {
         <div class="relative h-full">
           <div class="flex justify-between items-center h-full">
             <!-- Logo -->
-            <div class="cursor-pointer">
-              <img class="w-[110px]" src="../../assets/logo/logo.png" alt="logo" />
-            </div>
-
-            <!-- Menu -->
-            <div class="h-full flex justify-between items-center">
-              <div class="category-and-nav flex xl:space-x-7 space-x-3 items-center">
-                <div class="nav">
-                  <ul class="nav-wrapper flex xl:space-x-10 space-x-5">
-                    <li class="relative">
-                      <RouterLink
-                        to="/"
-                        class="flex items-center text-lg font-600 cursor-pointer text-qblacktext"
-                      >
-                        <span>Products</span>
-                      </RouterLink>
-                    </li>
-                    <li>
-                      <RouterLink
-                        to="/cart"
-                        class="flex items-center text-lg font-600 cursor-pointer text-qblacktext"
-                      >
-                        <span>Cart</span>
-                      </RouterLink>
-                    </li>
-                    <li>
-                      <RouterLink
-                        to="/order"
-                        class="flex items-center text-lg font-600 cursor-pointer text-qblacktext"
-                      >
-                        <span>Order</span>
-                      </RouterLink>
-                    </li>
-                  </ul>
-                </div>
+            <RouterLink to="/">
+              <div class="cursor-pointer">
+                <img class="w-[110px]" src="../../assets/logo/logo.png" alt="logo" />
               </div>
-            </div>
+            </RouterLink>
+            <!-- Menu -->
+            <MenuVue />
 
             <!-- Cart -->
             <div class="flex space-x-6 items-center">
@@ -96,20 +72,25 @@ const handleDeleteCart = (id) => {
                               />
                             </div>
                             <div class="flex-1 h-full flex flex-col justify-center">
-                              <p
-                                class="title mb-2 text-[13px] font-600 text-qblack leading-4 line-clamp-2 hover:text-blue-600"
-                              >
-                                {{ car.name }}
-                              </p>
+                              <RouterLink :to="`/product/${car.id}`">
+                                <p
+                                  class="title mb-2 text-[13px] font-600 text-qblack leading-4 line-clamp-2 hover:text-blue-600"
+                                  @click="handleProductClick(car.id)"
+                                >
+                                  {{ car.name }}
+                                </p>
+                              </RouterLink>
                               <p class="price">
-                                <span class="offer-price text-qred font-600 text-[15px] ml-2"
-                                  >${{ car.original_price }}</span
+                                <span class="offer-price text-qred font-600 text-[15px] ml-2">
+                                  <b>Price:</b>
+                                  ${{ car.original_price }}</span
                                 >
                               </p>
                               <p class="quantity">
-                                <span class="offer-price text-qred font-600 text-[15px] ml-2">{{
-                                  car.quantity
-                                }}</span>
+                                <span class="offer-price text-qred font-600 text-[15px] ml-2">
+                                  <b>Quantity: </b>
+                                  {{ car.quantity }}</span
+                                >
                               </p>
                             </div>
                           </div>

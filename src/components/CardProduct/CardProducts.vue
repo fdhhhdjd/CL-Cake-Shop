@@ -111,9 +111,6 @@ const addToCartHandler = async (id) => {
                         >
                           <b>Name</b>: {{ product.name }}
                         </p>
-                      </RouterLink>
-
-                      <RouterLink :to="`/product/${product.id}`">
                         <p
                           class="title mb-2 text-[15px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-qyellow cursor-pointer"
                           @click="handleProductClick(product.id)"

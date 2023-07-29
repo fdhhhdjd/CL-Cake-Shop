@@ -1,19 +1,45 @@
 <script setup>
 //* PRODUCT DETAIl
-import { useSelector } from '../../helpers';
+import { useDispatch, useSelector } from '../../helpers';
 
 //* PRODUCT
 import ImageProduct from './ImageProduct/index.vue';
 
 //* LAYOUT
 import LoadingVue from '../../layouts/Loading/index.vue';
+import { addToCartMutingQuantity } from '../../providers/redux/cart/cart_thunk';
+import { ref } from 'vue';
+
+const dispatch = useDispatch();
 
 const product = useSelector((state) => state.products);
+
+const quantity = ref(1);
+
+// Add to cart
+const addToCartHandler = async (id) => {
+  dispatch(addToCartMutingQuantity({ productId: id, quantity: quantity.value }));
+};
+
+const increaseQuantity = () => {
+  if (quantity.value === product.value.productsDetail.stock_count) {
+    return;
+  }
+  quantity.value++;
+};
+
+const decreaseQuantity = () => {
+  if (quantity.value > 1) {
+    quantity.value--;
+  }
+};
 </script>
 
 <template>
+  <!-- Loading -->
   <LoadingVue v-if="product.loading" />
 
+  <!-- Detail -->
   <div v-else class="w-full lg:flex justify-between">
     <div class="lg:w-1/2 xl:mr-[70px] lg:mr-[50px]">
       <ImageProduct />
@@ -44,8 +70,21 @@ const product = useSelector((state) => state.products);
         </div>
 
         <div class="flex space-x-2 items-center mb-7">
-          <span class="text-sm font-500 text-gray-500 line-through mt-2">$9.99</span>
-          <span class="text-2xl font-500 text-red-500"
+          <span
+            :class="
+              product.productsDetail.discounted_price
+                ? 'text-sm font-500 text-gray-500 line-through mt-2'
+                : 'text-2xl font-500'
+            "
+          >
+            ${{ product.productsDetail.original_price }}
+          </span>
+
+          <span v-if="product.productsDetail.discounted_price">-</span>
+
+          <span
+            v-if="product.productsDetail.discounted_price"
+            class="text-2xl font-500 text-red-500"
             >${{ product.productsDetail.discounted_price }}</span
           >
         </div>
@@ -62,15 +101,16 @@ const product = useSelector((state) => state.products);
         <div class="w-full flex items-center h-[50px] space-x-[10px] mb-[30px]">
           <div class="w-[120px] h-full px-[26px] flex items-center border border-gray">
             <div class="flex justify-between items-center w-full">
-              <button class="text-base text-gray-500">-</button>
-              <span>1</span>
-              <button class="text-base text-gray-500">+</button>
+              <button class="text-base text-gray-500" @click="decreaseQuantity">-</button>
+              <span> {{ quantity }} </span>
+              <button class="text-base text-gray-500" @click="increaseQuantity">+</button>
             </div>
           </div>
 
           <div class="h-full">
             <button
               class="bg-gray-900 px-16 text-white hover:opacity-75 text-sm font-semibold w-full h-full"
+              @click="addToCartHandler(product.productsDetail.id)"
             >
               Add To Cart
             </button>

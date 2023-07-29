@@ -16,6 +16,24 @@ export const addToCart = createAsyncThunk(
   }
 );
 
+// Add To Cart Muting Quantity
+export const addToCartMutingQuantity = createAsyncThunk(
+  'cart/addToCartMutingQuantity',
+  async ({ productId, quantity }, { rejectWithValue }) => {
+    try {
+      return {
+        productId,
+        quantity,
+      };
+    } catch (error) {
+      if (error) {
+        // Trả về error nếu có lỗi xảy ra
+        return rejectWithValue(error);
+      }
+    }
+  }
+);
+
 // Delete To Cart
 export const deleteToCart = createAsyncThunk(
   'cart/deleteToCart',

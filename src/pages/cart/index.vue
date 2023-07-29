@@ -8,6 +8,8 @@ import {
   incrementQuantity,
   decrementQuantity,
 } from '../../providers/redux/cart/cart_thunk';
+import { getDetailProductInitial } from '../../providers/redux/product/product_thunk';
+import { rouserNumber } from '../../utils';
 
 const dispatch = useDispatch();
 
@@ -26,6 +28,11 @@ const handleIncrementQuantity = (id) => {
 // Handle increment quantity
 const handleDecrementQuantity = (id) => {
   dispatch(decrementQuantity({ productId: id }));
+};
+
+// Handle detail products
+const handleProductClick = (id) => {
+  dispatch(getDetailProductInitial({ id }));
 };
 </script>
 
@@ -85,9 +92,14 @@ const handleDecrementQuantity = (id) => {
                         />
                       </div>
                       <div class="flex-1 flex flex-col">
-                        <p class="font-medium text-[15px] text-black-500">
-                          {{ car.name }}
-                        </p>
+                        <RouterLink :to="`/product/${car.id}`">
+                          <p
+                            @click="handleProductClick(car.id)"
+                            class="font-medium text-[15px] text-black-500"
+                          >
+                            {{ car.name }}
+                          </p>
+                        </RouterLink>
                       </div>
                     </div>
                   </td>
@@ -139,7 +151,9 @@ const handleDecrementQuantity = (id) => {
                   <td class="text-right py-4 px-2">
                     <div class="flex space-x-1 items-center justify-center">
                       <span class="text-[15px] font-normal"
-                        >${{ (car.discounted_price || car.original_price) * car.quantity }}</span
+                        >${{
+                          rouserNumber((car.discounted_price || car.original_price) * car.quantity)
+                        }}</span
                       >
                     </div>
                   </td>
@@ -184,7 +198,9 @@ const handleDecrementQuantity = (id) => {
                   <div class="mb-6">
                     <div class="flex justify-between mb-6">
                       <p class="text-[15px] font-medium text-black">Cost Total</p>
-                      <p class="text-[15px] font-medium text-red-500">${{ storeCart.cost }}</p>
+                      <p class="text-[15px] font-medium text-red-500">
+                        ${{ rouserNumber(storeCart.cost) }}
+                      </p>
                     </div>
                     <div class="w-full h-[1px] bg-[#ededed]"></div>
                   </div>
@@ -205,7 +221,9 @@ const handleDecrementQuantity = (id) => {
                     <div class="mb-6">
                       <div class="flex justify-between">
                         <p class="text-[18px] font-medium text-black">Total</p>
-                        <p class="text-[18px] font-medium text-red-500">${{ storeCart.total }}</p>
+                        <p class="text-[18px] font-medium text-red-500">
+                          ${{ rouserNumber(storeCart.total) }}
+                        </p>
                       </div>
                     </div>
                   </div>
