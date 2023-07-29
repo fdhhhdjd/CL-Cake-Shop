@@ -106,6 +106,7 @@ module.exports = {
     // ESLint plugin vue
     // 'vue/block-tag-newline': 'error',
     'vue/component-api-style': 'error',
+    'vue/require-prop-types': 'off',
     'vue/component-name-in-template-casing': [
       'error',
       'PascalCase',

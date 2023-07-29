@@ -53,6 +53,9 @@ const handleDeleteCart = (id) => {
                 >
                   <div class="w-full h-full">
                     <div class="product-items h-[310px] overflow-y-scroll">
+                      <div v-if="storeCart.cart.length === 0" class="mt-16">
+                        <img src="../../assets/empty/emptyHeader-removebg-preview.png" alt="" />
+                      </div>
                       <!-- List Cart -->
                       <ul v-for="car in storeCart.cart" :key="car.id">
                         <li class="w-full h-full flex">
@@ -152,7 +155,7 @@ const handleDeleteCart = (id) => {
           <img class="w-[80px]" src="../../assets/logo/logo.png" alt="logo" />
         </div>
         <div class="cart relative cursor-pointer">
-          <RouterLink to="/car">
+          <RouterLink to="/cart">
             <span
               ><svg
                 width="18"

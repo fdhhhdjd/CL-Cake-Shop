@@ -63,14 +63,14 @@ const addToCartHandler = async (id) => {
                       <img
                         :src="product.image_url"
                         alt=""
-                        class="bg-image bg-center bg-no-repeat w-9/12 mx-auto"
+                        class="bg-image bg-center bg-no-repeat w-9/12 mx-auto transition-all duration-200 group-hover:-translate-y-4"
                       />
                     </div>
 
                     <!-- Card content -->
                     <div class="product-card-details px-[40px] pb-[40px] relative">
                       <div
-                        class="absolute w-full h-10 px-[30px] left-0 top-40 group-hover:top-[85px] transition-all duration-300 ease-in-out"
+                        class="top-60 group-hover:top-[150px] absolute w-full h-10 px-[30px] left-0 transition-all duration-300 ease-in-out"
                       >
                         <button
                           type="button"

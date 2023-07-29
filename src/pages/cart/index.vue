@@ -1,4 +1,7 @@
 <script setup>
+//* LIBRARY
+import { ref } from 'vue';
+
 //* HELPER
 import { useDispatch, useSelector } from '../../helpers';
 
@@ -12,7 +15,13 @@ import {
 //* UTILS
 import { rouserNumber } from '../../utils/index';
 
+//* COMPONENTS
+import OrderConfirmation from '../../components/Confirm/Confirmation.vue';
+import EmptyCartVue from '../../components/EmptyCart/EmptyCart.vue';
+
 const dispatch = useDispatch();
+
+const showConfirmation = ref(false);
 
 const storeCart = useSelector((state) => state.carts);
 
@@ -30,6 +39,14 @@ const handleIncrementQuantity = (id) => {
 const handleDecrementQuantity = (id) => {
   dispatch(decrementQuantity({ productId: id }));
 };
+
+const showOrderConfirmation = () => {
+  showConfirmation.value = true;
+};
+
+const hideOrderConfirmation = () => {
+  showConfirmation.value = false;
+};
 </script>
 
 <template>
@@ -38,21 +55,7 @@ const handleDecrementQuantity = (id) => {
     <div class="w-full">
       <div class="container mx-auto">
         <!-- No data cart -->
-        <div v-if="storeCart.cart.length === 0" class="flex justify-center items-center w-full">
-          <div>
-            <div class="sm:mb-10 mb-5 transform scale-50 sm:scale-100"></div>
-            <div class="empty-content w-full">
-              <h1 class="sm:text-xl text-base font-semibold text-center mb-5">
-                Empty! You don Cart any Products
-              </h1>
-              <a href="/" class="flex justify-center w-full">
-                <div class="w-[180px] h-[50px]">
-                  <button class="bg-[#ffa800] py-2 px-4 rounded-lg">Back to Shop</button>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
+        <EmptyCartVue v-if="storeCart.cart.length === 0" />
 
         <div v-else>
           <!-- Cart exits -->
@@ -62,11 +65,21 @@ const handleDecrementQuantity = (id) => {
                 <tr
                   class="text-[13px] font-medium text-black bg-[#f6f6f6] whitespace-nowrap px-2 border-b default-border-bottom uppercase"
                 >
-                  <td class="py-4 pl-10 whitespace-nowrap min-w-[300px]">Product</td>
-                  <td class="py-4 whitespace-nowrap min-w-[200px] text-center">Price</td>
-                  <td class="py-4 whitespace-nowrap min-w-[200px] text-center">Discounted price</td>
-                  <td class="py-4 whitespace-nowrap min-w-[300px] text-center">Quantity</td>
-                  <td class="py-4 whitespace-nowrap min-w-[300px] text-center">Total</td>
+                  <td class="py-4 pl-10 whitespace-nowrap min-w-[300px]">
+Product
+</td>
+                  <td class="py-4 whitespace-nowrap min-w-[200px] text-center">
+Price
+</td>
+                  <td class="py-4 whitespace-nowrap min-w-[200px] text-center">
+Discounted price
+</td>
+                  <td class="py-4 whitespace-nowrap min-w-[300px] text-center">
+Quantity
+</td>
+                  <td class="py-4 whitespace-nowrap min-w-[300px] text-center">
+Total
+</td>
                   <td class="py-4 whitespace-nowrap text-right w-[114px]"></td>
                 </tr>
 
@@ -190,7 +203,9 @@ const handleDecrementQuantity = (id) => {
                 <div class="sm:w-[370px] w-full border border-[#ededed] px-[30px] py-[26px]">
                   <div class="mb-6">
                     <div class="flex justify-between mb-6">
-                      <p class="text-[15px] font-medium text-black">Cost Total</p>
+                      <p class="text-[15px] font-medium text-black">
+Cost Total
+</p>
                       <p class="text-[15px] font-medium text-red-500">
                         ${{ rouserNumber(storeCart.cost) }}
                       </p>
@@ -200,7 +215,9 @@ const handleDecrementQuantity = (id) => {
 
                   <div class="w-full mb-3">
                     <div class="mb-[17px]">
-                      <h1 class="text-[15px] font-medium">Calculate Shipping</h1>
+                      <h1 class="text-[15px] font-medium">
+Calculate Shipping
+</h1>
                     </div>
                     <div
                       class="w-full h-[50px] border border-[#EDEDED] px-5 flex justify-between items-center mb-10"
@@ -213,7 +230,9 @@ const handleDecrementQuantity = (id) => {
                     </div>
                     <div class="mb-6">
                       <div class="flex justify-between">
-                        <p class="text-[18px] font-medium text-black">Total</p>
+                        <p class="text-[18px] font-medium text-black">
+Total
+</p>
                         <p class="text-[18px] font-medium text-red-500">
                           ${{ rouserNumber(storeCart.total) }}
                         </p>
@@ -222,7 +241,15 @@ const handleDecrementQuantity = (id) => {
                   </div>
 
                   <div class="w-full h-[50px] bg-black text-white flex justify-center items-center">
-                    <button class="text-sm font-semibold">Proceed to Checkout</button>
+                    <button class="text-sm font-semibold" @click="showOrderConfirmation">
+                      Proceed to Checkout
+                    </button>
+                    <Teleport to="body">
+                      <OrderConfirmation
+                        :show-confirmation="showConfirmation"
+                        :hide-order-confirmation="hideOrderConfirmation"
+                      />
+                    </Teleport>
                   </div>
                 </div>
               </div>
