@@ -1,9 +1,9 @@
 <script setup>
-import ProductsVue from './pages/products/index.vue';
+import LayoutDefat from './layouts/Default/index.vue';
 </script>
 
 <template>
-  <ProductsVue />
+  <LayoutDefat />
 </template>
 
 <!-- <style scoped></style> -->

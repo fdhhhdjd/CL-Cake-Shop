@@ -1,2 +1,0 @@
-//* ROUTE
-export * from './router'
