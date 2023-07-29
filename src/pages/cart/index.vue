@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from '../../helpers';
 
 //* PROVIDER
 import {
+  decrementQuantity,
   deleteToCart,
   incrementQuantity,
-  decrementQuantity,
 } from '../../providers/redux/cart/cart_thunk';
-import { getDetailProductInitial } from '../../providers/redux/product/product_thunk';
-import { rouserNumber } from '../../utils';
+
+//* UTILS
+import { rouserNumber } from '../../utils/index';
 
 const dispatch = useDispatch();
 
@@ -28,11 +29,6 @@ const handleIncrementQuantity = (id) => {
 // Handle increment quantity
 const handleDecrementQuantity = (id) => {
   dispatch(decrementQuantity({ productId: id }));
-};
-
-// Handle detail products
-const handleProductClick = (id) => {
-  dispatch(getDetailProductInitial({ id }));
 };
 </script>
 
@@ -93,10 +89,7 @@ const handleProductClick = (id) => {
                       </div>
                       <div class="flex-1 flex flex-col">
                         <RouterLink :to="`/product/${car.id}`">
-                          <p
-                            @click="handleProductClick(car.id)"
-                            class="font-medium text-[15px] text-black-500"
-                          >
+                          <p class="font-medium text-[15px] text-black-500">
                             {{ car.name }}
                           </p>
                         </RouterLink>

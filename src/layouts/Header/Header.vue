@@ -16,11 +16,6 @@ const storeCart = useSelector((state) => state.carts);
 const handleDeleteCart = (id) => {
   dispatch(deleteToCart({ productId: id }));
 };
-
-// Handle detail products
-const handleProductClick = (id) => {
-  dispatch(getDetailProductInitial({ id }));
-};
 </script>
 
 <template>
@@ -75,7 +70,6 @@ const handleProductClick = (id) => {
                               <RouterLink :to="`/product/${car.id}`">
                                 <p
                                   class="title mb-2 text-[13px] font-600 text-qblack leading-4 line-clamp-2 hover:text-blue-600"
-                                  @click="handleProductClick(car.id)"
                                 >
                                   {{ car.name }}
                                 </p>

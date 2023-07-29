@@ -8,11 +8,24 @@ import ImageProduct from './ImageProduct/index.vue';
 //* LAYOUT
 import LoadingVue from '../../layouts/Loading/index.vue';
 import { addToCartMutingQuantity } from '../../providers/redux/cart/cart_thunk';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import { getDetailProductInitial } from '../../providers/redux/product/product_thunk';
+import { useRoute } from 'vue-router';
 
 const dispatch = useDispatch();
+const route = useRoute();
 
 const product = useSelector((state) => state.products);
+
+watch(
+  () => route.params.id,
+  (newId) => {
+    if (!product?.value?.productsDetail) {
+      dispatch(getDetailProductInitial({ id: +newId }));
+    }
+  },
+  { immediate: true }
+);
 
 const quantity = ref(1);
 

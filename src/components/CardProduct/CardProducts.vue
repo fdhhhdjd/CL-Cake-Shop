@@ -2,16 +2,10 @@
 // HELPERS
 import { useDispatch, useSelector } from '../../helpers';
 import { addToCart } from '../../providers/redux/cart/cart_thunk';
-import { getDetailProductInitial } from '../../providers/redux/product/product_thunk';
 
 const dispatch = useDispatch();
 // Take data for Redux
 const resultProduct = useSelector((state) => state.products);
-
-// Handle detail products
-const handleProductClick = (id) => {
-  dispatch(getDetailProductInitial({ id }));
-};
 
 // Add to cart product
 const addToCartHandler = async (id) => {
@@ -107,13 +101,11 @@ const addToCartHandler = async (id) => {
                       <RouterLink :to="`/product/${product.id}`">
                         <p
                           class="title mb-2 text-[15px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-qyellow cursor-pointer"
-                          @click="handleProductClick(product.id)"
                         >
                           <b>Name</b>: {{ product.name }}
                         </p>
                         <p
                           class="title mb-2 text-[15px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-qyellow cursor-pointer"
-                          @click="handleProductClick(product.id)"
                         >
                           <b>Des</b>: {{ product.description }}
                         </p>
