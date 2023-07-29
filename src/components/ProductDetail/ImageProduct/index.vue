@@ -1,4 +1,5 @@
 <script setup>
+//* LIBRARY
 import { useSelector } from '../../../helpers';
 
 // Define the 'image' prop here

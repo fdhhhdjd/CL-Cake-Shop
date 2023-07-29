@@ -1,5 +1,8 @@
 //* CONFIGS
-export { default as Configs } from '../configs/configs'
+export { default as Configs } from '../configs/configs';
 
-//* CONTACTS
-export * from '../configs/constants'
+//* CONSTANTS
+export * from '../configs/constants';
+
+//* TITLE
+export * from './titles';

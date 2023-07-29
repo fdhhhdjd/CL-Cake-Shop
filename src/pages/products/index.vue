@@ -1,6 +1,5 @@
 <script setup>
 //* HELPER
-
 import { useDispatch, useSelector } from '../../helpers';
 
 // COMPONENTS
@@ -21,7 +20,9 @@ const product = useSelector((state) => state.products);
 </script>
 
 <template>
+  <!-- Loading -->
   <LoadingVue v-if="product.loading" />
 
+  <!-- List Product -->
   <CardProductsVue v-else />
 </template>

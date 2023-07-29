@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from '../../helpers';
 import { addToCart } from '../../providers/redux/cart/cart_thunk';
 
 const dispatch = useDispatch();
+
 // Take data for Redux
 const resultProduct = useSelector((state) => state.products);
 
@@ -13,6 +14,7 @@ const addToCartHandler = async (id) => {
     // Add products
     await dispatch(addToCart({ productId: id }));
   } catch (err) {
+    // logs Error
     console.log(err);
   }
 };

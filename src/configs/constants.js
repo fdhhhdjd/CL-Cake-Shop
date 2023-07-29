@@ -1,10 +1,10 @@
-// Todo: Node
+// Todo: NODE ENV
 export const NODE = {
   DEV: 'development',
   PRO: 'production',
 };
 
-// Todo: Name Redux
+// Todo: NAME REDUX
 export const REDUX_NAME = {
   CART: 'cart_slice',
   PRODUCT: 'product_slice',
@@ -18,4 +18,18 @@ export const TIME = {
 // Todo: ROUNDED NUMBER DECIMAL
 export const ROUND = {
   NUMBER: 3,
+};
+
+// Todo: STATUS
+export const STATUS = {
+  ENABLE: true,
+  DISABLE: false,
+};
+
+// Todo: MINIMUM QUANTITY
+export const MINIMUM_QUANTITY = 1;
+
+// Todo: DATA TYPE
+export const DATA_TYPE = {
+  STRING: 'string',
 };

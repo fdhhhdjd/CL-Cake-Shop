@@ -1,14 +1,17 @@
+//* LIBRARY
 import { reactive } from 'vue';
 
+//* STORE KEY
 export const storeKey = Symbol('Redux-Store');
 
-export const createRedux = store => {
+//* CREATE REDUX
+export const createRedux = (store) => {
   const rootStore = reactive({
     state: store.getState(),
   });
 
   return {
-    install: app => {
+    install: (app) => {
       app.provide(storeKey, rootStore);
 
       store.subscribe(() => {

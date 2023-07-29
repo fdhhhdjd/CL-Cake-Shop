@@ -1,4 +1,8 @@
 <script setup>
+//* LIBRARY
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
+
 //* PRODUCT DETAIl
 import { useDispatch, useSelector } from '../../helpers';
 
@@ -10,15 +14,20 @@ import LoadingVue from '../../components/Loading/index.vue';
 
 //* LAYOUT
 import { addToCartMutingQuantity } from '../../providers/redux/cart/cart_thunk';
-import { ref, watch } from 'vue';
 import { getDetailProductInitial } from '../../providers/redux/product/product_thunk';
-import { useRoute } from 'vue-router';
+
+// CONFIGS
+import { MINIMUM_QUANTITY, STATUS } from '../../configs';
 
 const dispatch = useDispatch();
+
 const route = useRoute();
 
 const product = useSelector((state) => state.products);
 
+const quantity = ref(1);
+
+// Watch change id for url
 watch(
   () => route.params.id,
   (newId) => {
@@ -29,25 +38,31 @@ watch(
       dispatch(getDetailProductInitial({ id: +newId }));
     }
   },
-  { immediate: true }
+  { immediate: STATUS.ENABLE }
 );
-
-const quantity = ref(1);
 
 // Add to cart
 const addToCartHandler = async (id) => {
   dispatch(addToCartMutingQuantity({ productId: id, quantity: quantity.value }));
 };
 
+// Increase Quantity
 const increaseQuantity = () => {
-  if (quantity.value === product.value.productsDetail.stock_count) {
-    return;
+  // Check if the current quantity is equal to the product's stock count
+  const checkQuantityAndStock = quantity.value === product.value.productsDetail.stock_count;
+
+  if (checkQuantityAndStock) {
+    return; // If the current quantity matches the stock count, do nothing (no increase allowed).
   }
+
+  // Increment the quantity by 1 if it doesn't exceed the stock count.
   quantity.value++;
 };
 
+// Decrease Quantity
 const decreaseQuantity = () => {
-  if (quantity.value > 1) {
+  // Decrement the quantity by 1 if it is greater than 1 (minimum quantity).
+  if (quantity.value > MINIMUM_QUANTITY) {
     quantity.value--;
   }
 };
@@ -119,13 +134,9 @@ const decreaseQuantity = () => {
         <div class="w-full flex items-center h-[50px] space-x-[10px] mb-[30px]">
           <div class="w-[120px] h-full px-[26px] flex items-center border border-gray">
             <div class="flex justify-between items-center w-full">
-              <button class="text-base text-gray-500" @click="decreaseQuantity">
--
-</button>
+              <button class="text-base text-gray-500" @click="decreaseQuantity">-</button>
               <span> {{ quantity }} </span>
-              <button class="text-base text-gray-500" @click="increaseQuantity">
-+
-</button>
+              <button class="text-base text-gray-500" @click="increaseQuantity">+</button>
             </div>
           </div>
 
