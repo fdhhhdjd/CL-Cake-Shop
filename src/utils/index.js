@@ -73,5 +73,5 @@ export const getURIFromTemplate = (template, data) => {
 };
 
 export const getImage = (pathImage) => {
-  return `/src/assets/${pathImage}`;
+  return `/assets/${pathImage}`;
 };
