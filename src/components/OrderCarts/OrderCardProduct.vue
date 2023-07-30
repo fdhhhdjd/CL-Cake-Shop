@@ -22,7 +22,9 @@
         <p class="text-base dark:text-white xl:text-lg leading-6">
           $36.00 <span class="text-red-300 line-through"> $45.00</span>
         </p>
-        <p class="text-base dark:text-white xl:text-lg leading-6 text-gray-800">01</p>
+        <p class="text-base dark:text-white xl:text-lg leading-6 text-gray-800">
+01
+</p>
         <p class="text-base dark:text-white xl:text-lg font-semibold leading-6 text-gray-800">
           $36.00
         </p>

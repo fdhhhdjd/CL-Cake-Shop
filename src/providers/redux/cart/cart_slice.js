@@ -217,7 +217,7 @@ const Carts = createSlice({
 
         const productToAdd = {
           ...foundProduct,
-          quantity: 1, // If found, create a new cart item with quantity set to 1.
+          quantity: quantity || 1, // If found, create a new cart item with quantity set to 1.
         };
 
         state.cart.push(productToAdd); // Add the new item to the cart.
