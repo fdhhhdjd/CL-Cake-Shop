@@ -42,7 +42,14 @@ const initialState = {
 const Carts = createSlice({
   name: REDUX_NAME.CART,
   initialState,
-  reducers: {},
+  reducers: {
+    // Clear all Carts
+    clearCart: (state) => {
+      state.cart = [];
+      state.total = 0;
+      state.cost = 0;
+    },
+  },
   extraReducers: {
     //* Add to cart
     [addToCart.pending]: (state, action) => {
@@ -260,4 +267,5 @@ const Carts = createSlice({
 });
 
 const CartsSlice = Carts.reducer;
+export const { clearCart } = Carts.actions;
 export default CartsSlice;

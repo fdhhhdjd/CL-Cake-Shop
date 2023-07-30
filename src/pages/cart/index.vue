@@ -17,7 +17,7 @@ import { rouserNumber } from '../../utils/index';
 
 //* COMPONENTS
 import OrderConfirmation from '../../components/Confirm/Confirmation.vue';
-import EmptyCartVue from '../../components/EmptyCart/EmptyCart.vue';
+import EmptyCartVue from '../../components/Empty/EmptyCart.vue';
 
 const dispatch = useDispatch();
 
@@ -67,21 +67,11 @@ const hideOrderConfirmation = () => {
                 <tr
                   class="text-[13px] font-medium text-black bg-[#f6f6f6] whitespace-nowrap px-2 border-b default-border-bottom uppercase"
                 >
-                  <td class="py-4 pl-10 whitespace-nowrap min-w-[300px]">
-Product
-</td>
-                  <td class="py-4 whitespace-nowrap min-w-[200px] text-center">
-Price
-</td>
-                  <td class="py-4 whitespace-nowrap min-w-[200px] text-center">
-Discounted price
-</td>
-                  <td class="py-4 whitespace-nowrap min-w-[300px] text-center">
-Quantity
-</td>
-                  <td class="py-4 whitespace-nowrap min-w-[300px] text-center">
-Total
-</td>
+                  <td class="py-4 pl-10 whitespace-nowrap min-w-[300px]">Product</td>
+                  <td class="py-4 whitespace-nowrap min-w-[200px] text-center">Price</td>
+                  <td class="py-4 whitespace-nowrap min-w-[200px] text-center">Discounted price</td>
+                  <td class="py-4 whitespace-nowrap min-w-[300px] text-center">Quantity</td>
+                  <td class="py-4 whitespace-nowrap min-w-[300px] text-center">Total</td>
                   <td class="py-4 whitespace-nowrap text-right w-[114px]"></td>
                 </tr>
 
@@ -205,9 +195,7 @@ Total
                 <div class="sm:w-[370px] w-full border border-[#ededed] px-[30px] py-[26px]">
                   <div class="mb-6">
                     <div class="flex justify-between mb-6">
-                      <p class="text-[15px] font-medium text-black">
-Cost Total
-</p>
+                      <p class="text-[15px] font-medium text-black">Cost Total</p>
                       <p class="text-[15px] font-medium text-red-500">
                         ${{ rouserNumber(storeCart.cost) }}
                       </p>
@@ -217,9 +205,7 @@ Cost Total
 
                   <div class="w-full mb-3">
                     <div class="mb-[17px]">
-                      <h1 class="text-[15px] font-medium">
-Calculate Shipping
-</h1>
+                      <h1 class="text-[15px] font-medium">Calculate Shipping</h1>
                     </div>
                     <div
                       class="w-full h-[50px] border border-[#EDEDED] px-5 flex justify-between items-center mb-10"
@@ -232,9 +218,7 @@ Calculate Shipping
                     </div>
                     <div class="mb-6">
                       <div class="flex justify-between">
-                        <p class="text-[18px] font-medium text-black">
-Total
-</p>
+                        <p class="text-[18px] font-medium text-black">Total</p>
                         <p class="text-[18px] font-medium text-red-500">
                           ${{ rouserNumber(storeCart.total) }}
                         </p>

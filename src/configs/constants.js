@@ -8,6 +8,7 @@ export const NODE = {
 export const REDUX_NAME = {
   CART: 'cart_slice',
   PRODUCT: 'product_slice',
+  ORDER: 'order_slice',
 };
 
 // Todo: TIME
