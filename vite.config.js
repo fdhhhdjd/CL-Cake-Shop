@@ -2,6 +2,7 @@
 import vue from '@vitejs/plugin-vue';
 import { defineConfig } from 'vite';
 import viteCompression from 'vite-plugin-compression';
+import { fileURLToPath } from 'node:url';
 
 //* SETUP VITE
 // https://vitejs.dev/config/
@@ -27,4 +28,10 @@ export default defineConfig({
 
   // Default
   base: '/',
+
+  resolve: {
+    alias: {
+      '@images': fileURLToPath(new URL('./src/assets/', import.meta.url)),
+    },
+  },
 });

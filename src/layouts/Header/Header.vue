@@ -28,7 +28,7 @@ const handleDeleteCart = (id) => {
             <!-- Logo -->
             <RouterLink to="/">
               <div class="cursor-pointer">
-                <img class="w-[110px]" :src="getImage('/logo/logo.png')" alt="logo" />
+                <img class="w-[110px]" :src="getImage()" alt="logo" />
               </div>
             </RouterLink>
             <!-- Menu -->
