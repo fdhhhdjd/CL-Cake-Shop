@@ -13,11 +13,21 @@
           Empty! You don Cart any Products
         </h1>
         <RouterLink to="/">
-          <div class="h-[50px] flex justify-center w-full">
-            <button class="bg-[#ffa800] py-2 px-4 rounded-lg">
-Back to Shop
-</button>
-          </div>
+          <span
+            class="inline-flex items-center px-6 py-2 text-white bg-[#ffa800] border rounded-full hover:bg-black focus:outline-none focus:ring"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-3 h-3 mr-2"
+              fill="none"
+              viewBox="0 0 30 30"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+            </svg>
+            <span class="text-sm font-medium">Back To Products</span>
+          </span>
         </RouterLink>
       </div>
     </div>

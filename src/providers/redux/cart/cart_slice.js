@@ -17,10 +17,19 @@ import {
   checkExistingProduct,
   deleteOneId,
   flatArrayAndGetProductFlowId,
+  getURIFromTemplate,
 } from '../../../utils';
 
-//* CONSTANTS
-import { REDUX_NAME } from '../../../configs/constants';
+//* CONFIGS
+import { WARNING, REDUX_NAME, SUCCESS, ERROR, INFO } from '../../../configs';
+
+//* UTILS
+import {
+  showErrorToast,
+  showInfoToast,
+  showSuccessToast,
+  showWarningToast,
+} from '../../../utils/toast';
 
 const initialState = {
   loading: false,
@@ -49,7 +58,8 @@ const Carts = createSlice({
 
       const checkQuantityAndStock = existingProduct?.quantity >= existingProduct?.stock_count; // Check if the quantity of the product in the cart exceeds its stock count.
       if (checkQuantityAndStock) {
-        return; // If the quantity exceeds stock count, return early, without making any further changes to the cart.
+        // Show toast info
+        return showInfoToast(INFO.QUANTITY_THAN_STOCK);
       }
 
       if (!existingProduct) {
@@ -63,14 +73,32 @@ const Carts = createSlice({
           };
 
           state.cart.push(productToAdd); // Add the new item to the cart.
+
+          // Convert message
+          const resultMessage = getURIFromTemplate(SUCCESS.ADD_TO_CART, {
+            nameProduct: productToAdd.name,
+          });
+
+          // Show toast success
+          showSuccessToast(resultMessage);
         } else {
           // If the product is not found (e.g., it does not exist in the data source):
           // Do nothing and return early.
-          return;
+          // Show toast Fail
+          return showErrorToast(ERROR.ADD_TO_CART);
         }
       } else {
         // If the product already exists in the cart, simply increment its quantity by 1.
         existingProduct.quantity += 1;
+
+        // Convert message
+        const resultMessage = getURIFromTemplate(SUCCESS.ADD_INCREASE_CART, {
+          nameProduct: existingProduct.name,
+          quantity: existingProduct.quantity,
+        });
+
+        // Show toast success
+        showSuccessToast(resultMessage);
       }
 
       // Calculate total
@@ -94,6 +122,9 @@ const Carts = createSlice({
       const productId = action.payload; // Get the productId from the payload of the fulfilled action.
 
       state.cart = deleteOneId(state.cart, productId); // Update the cart state by removing the item with the specified productId.
+
+      // Show toast success
+      showSuccessToast(SUCCESS.DELETE_PRODUCT);
     },
     [deleteToCart.rejected]: (state, action) => {
       state.loading = false; // When the 'deleteToCart' async action is rejected (encountered an error), set the loading state to false.
@@ -114,8 +145,11 @@ const Carts = createSlice({
       if (existingProduct) {
         // If the product already exists in the cart:
         const checkQuantityThanStock = existingProduct.quantity >= existingProduct.stock_count; // Check if the quantity of the product in the cart exceeds its stock count.
+
+        // If the quantity exceeds stock count, return early, without making any further changes to the cart.
         if (checkQuantityThanStock) {
-          return; // If the quantity exceeds stock count, return early, without making any further changes to the cart.
+          // Show toast info
+          return showInfoToast(INFO.QUANTITY_THAN_STOCK);
         }
         existingProduct.quantity += 1; // Increment the quantity of the existing product in the cart by 1.
       }
@@ -149,6 +183,9 @@ const Carts = createSlice({
           existingProduct.quantity -= 1; // If the quantity is greater than 1, decrement the quantity of the existing product in the cart by 1.
         } else {
           state.cart = deleteOneId(state.cart, productId); // If the quantity is exactly 1, remove the product from the cart.
+
+          // Show toast warning
+          return showWarningToast(WARNING.DELETE_PRODUCT);
         }
       }
 
@@ -184,16 +221,35 @@ const Carts = createSlice({
         };
 
         state.cart.push(productToAdd); // Add the new item to the cart.
+
+        // Convert message
+        const resultMessage = getURIFromTemplate(SUCCESS.ADD_TO_CART, {
+          nameProduct: productToAdd.name,
+        });
+
+        // Show toast success
+        showSuccessToast(resultMessage);
       } else {
         // If the product already exists in the cart:
         const checkQuantityThanStock =
           existingProduct.quantity + quantity > existingProduct.stock_count; // Check if the total quantity after adding the new quantity exceeds the stock count.
 
+        // If the total quantity exceeds stock count, return early, without making any further changes to the cart.
         if (checkQuantityThanStock) {
-          return; // If the total quantity exceeds stock count, return early, without making any further changes to the cart.
+          // Show toast info
+          return showInfoToast(INFO.QUANTITY_THAN_STOCK);
         }
         // If the quantity doesn't exceed the stock count, increment the quantity of the existing product in the cart by the specified 'quantity'.
         existingProduct.quantity += quantity;
+
+        // Convert message
+        const resultMessage = getURIFromTemplate(SUCCESS.ADD_INCREASE_CART, {
+          nameProduct: existingProduct.name,
+          quantity: existingProduct.quantity,
+        });
+
+        // Show toast success
+        showSuccessToast(resultMessage);
       }
     },
     [addToCartMutingQuantity.rejected]: (state, action) => {

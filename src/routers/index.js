@@ -37,5 +37,15 @@ export default createRouter({
         title: ORDERS.LIST,
       },
     },
+    {
+      path: '/thankyou',
+      component: import('../pages/thankyou/index.vue'),
+    },
+    // will match everything and put it under `$route.params.pathMatch`
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: import('../pages/notfound/index.vue'),
+    },
   ],
 });

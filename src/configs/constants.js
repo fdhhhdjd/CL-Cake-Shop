@@ -13,6 +13,8 @@ export const REDUX_NAME = {
 // Todo: TIME
 export const TIME = {
   _1_SECOND: 1000,
+  _5_SECOND: 5 * 1000,
+  _8_SECOND: 8 * 1000,
 };
 
 // Todo: ROUNDED NUMBER DECIMAL

@@ -1,8 +1,10 @@
 //* LIBRARY
+import Toast, { POSITION } from 'vue-toastification';
 import { createApp } from 'vue';
 
 //* IMPORT CSS GLOBAL
 import './index.css';
+import 'vue-toastification/dist/index.css';
 
 //* IMPORT FILE MAIN VUE
 import App from './App.vue';
@@ -16,6 +18,10 @@ import { DATA_TYPE, DEFAULT } from './configs';
 //* PROVIDERS
 import { createRedux } from './providers/storePlugin';
 import store from './providers/store';
+
+const options = {
+  position: POSITION.TOP_RIGHT,
+};
 
 // This code sets the document title based on the route's meta information.
 // The 'router.beforeEach' function is a navigation guard provided by Vue Router,
@@ -36,4 +42,4 @@ router.beforeEach((to, _, next) => {
 });
 
 //* START ALL
-createApp(App).use(router).use(createRedux(store)).mount('#app');
+createApp(App).use(router).use(createRedux(store)).use(Toast, options).mount('#app');
