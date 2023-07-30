@@ -10,7 +10,7 @@ const props = defineProps(['orderItem']);
   <div
     v-for="order in props.orderItem"
     :key="order.id"
-    class="flex flex-col justify-start items-start dark:bg-gray-800 bg-gray-50 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full"
+    class="flex flex-col justify-start items-star bg-gray-50 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full"
   >
     <OrderCardProduct :order-item="order" />
   </div>
