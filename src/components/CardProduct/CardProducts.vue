@@ -133,25 +133,16 @@ const addToCartHandler = async (id) => {
                     <div
                       class="flex flex-col space-y-2 absolute group-hover:right-4 -right-10 top-20 transition-all duration-300 ease-in-out"
                     >
-                      <a href="https://shopo-next.vercel.app/#">
-                        <span
-                          class="w-10 h-10 flex justify-center items-center bg-gray-100 rounded"
-                        >
-                          <i class="fa-solid fa-expand" /> </span
-                      ></a>
+                      <span class="w-10 h-10 flex justify-center items-center bg-gray-100 rounded">
+                        <i class="fa-solid fa-expand" />
+                      </span>
 
-                      <a href="https://shopo-next.vercel.app/#"
-                        ><span
-                          class="w-10 h-10 flex justify-center items-center bg-gray-100 rounded"
-                        >
-                          <i class="fa-regular fa-heart" /> </span
-                      ></a>
-                      <a href="https://shopo-next.vercel.app/#"
-                        ><span
-                          class="w-10 h-10 flex justify-center items-center bg-gray-100 rounded"
-                        >
-                          <i class="fa-solid fa-arrows-rotate" /> </span
-                      ></a>
+                      <span class="w-10 h-10 flex justify-center items-center bg-gray-100 rounded">
+                        <i class="fa-regular fa-heart" />
+                      </span>
+                      <span class="w-10 h-10 flex justify-center items-center bg-gray-100 rounded">
+                        <i class="fa-solid fa-arrows-rotate" />
+                      </span>
                     </div>
                   </div>
                 </div>
