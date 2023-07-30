@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Chocolate Fudge Cake",
-    "image_url": "https://res.cloudinary.com/taithinhnam/image/upload/v1690710758/1_awgts1.jpg",
+    "image_url": "img/1.jpg",
     "description": "Decadent chocolate fudge cake with a rich, moist texture.",
     "original_price": 25.99,
     "is_on_discount": true,
@@ -12,7 +12,7 @@
   {
     "id": 2,
     "name": "Strawberry Cheesecake",
-    "image_url": "https://res.cloudinary.com/taithinhnam/image/upload/v1690710758/4_cqz6p9.jpg",
+    "image_url": "img/2.jpg",
     "description": "Creamy strawberry cheesecake with a buttery graham cracker crust.",
     "original_price": 29.99,
     "is_on_discount": false,
@@ -22,7 +22,7 @@
   {
     "id": 3,
     "name": "Mango Cake",
-    "image_url": "https://res.cloudinary.com/taithinhnam/image/upload/v1690710757/5_h9213c.jpg",
+    "image_url": "img/3.jpg",
     "description": "Classic mango cake with walnuts and cream cheese frosting.",
     "original_price": 21.99,
     "is_on_discount": true,
@@ -32,7 +32,7 @@
   {
     "id": 4,
     "name": "Almond Cake",
-    "image_url": "https://res.cloudinary.com/taithinhnam/image/upload/v1690710757/3_x075xa.jpg",
+    "image_url": "img/4.jpg",
     "description": "An abundance of fresh mixed fruits cake.",
     "original_price": 27.99,
     "is_on_discount": false,
@@ -42,7 +42,7 @@
   {
     "id": 5,
     "name": "Blackforest Cake",
-    "image_url": "https://res.cloudinary.com/taithinhnam/image/upload/v1690710757/2_qma9sz.jpg",
+    "image_url": "img/5.jpg",
     "description": "Soft chocolate sponge layered with dark sweet cherries decorated with premium chocolate shavings",
     "original_price": 18.99,
     "is_on_discount": true,

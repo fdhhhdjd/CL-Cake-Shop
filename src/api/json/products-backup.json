@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Chocolate Fudge Cake",
-    "image_url": "/src/assets/img/1.jpg",
+    "image_url": "img/1.jpg",
     "description": "Decadent chocolate fudge cake with a rich, moist texture.",
     "original_price": 25.99,
     "is_on_discount": true,

@@ -2,6 +2,7 @@
 // HELPERS
 import { useDispatch, useSelector } from '../../helpers';
 import { addToCart } from '../../providers/redux/cart/cart_thunk';
+import { getImage } from '../../utils';
 
 const dispatch = useDispatch();
 
@@ -27,9 +28,7 @@ const addToCartHandler = async (id) => {
         <div class="container-x mx-auto">
           <div class="section-title flex justify-between items-center mb-5">
             <div>
-              <h1 class="sm:text-3xl text-xl font-600 text-qblacktext leading-none">
-                List Products
-              </h1>
+              <h1 class="sm:text-3xl text-xl font-600 text-black leading-none">List Products</h1>
             </div>
             <div>
               <a href="">
@@ -63,7 +62,7 @@ const addToCartHandler = async (id) => {
                     <!-- Card Image -->
                     <div class="product-card-img w-full h-[300px]">
                       <img
-                        :src="product.image_url"
+                        :src="getImage(product.image_url)"
                         alt=""
                         class="bg-image bg-center bg-no-repeat w-9/12 mx-auto transition-all duration-200 group-hover:-translate-y-4"
                       />
@@ -102,12 +101,12 @@ const addToCartHandler = async (id) => {
                       <!-- Title name Product -->
                       <RouterLink :to="`/product/${product.id}`">
                         <p
-                          class="title mb-2 text-[15px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-qyellow cursor-pointer"
+                          class="title mb-2 text-[15px] font-600 text-black leading-[24px] line-clamp-2 hover:text-yellow cursor-pointer"
                         >
                           <b>Name</b>: {{ product.name }}
                         </p>
                         <p
-                          class="title mb-2 text-[15px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-qyellow cursor-pointer"
+                          class="title mb-2 text-[15px] font-600 text-black leading-[24px] line-clamp-2 hover:text-yellow cursor-pointer"
                         >
                           <b>Des</b>: {{ product.description }}
                         </p>

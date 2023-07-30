@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from '../../helpers';
 // PROVIDER
 import { deleteToCart } from '../../providers/redux/cart/cart_thunk';
 import { getDetailProductInitial } from '../../providers/redux/product/product_thunk';
+import { getImage } from '../../utils';
 
 // LAYOUT
 import MenuVue from '../Menu/index.vue';
@@ -49,7 +50,7 @@ const handleDeleteCart = (id) => {
                 </div>
                 <div
                   style="box-shadow: 0px 15px 50px 0px rgba(0, 0, 0, 0.14)"
-                  class="w-[300px] bg-white border-t-[3px] cart-wrappwer absolute -right-[45px] top-11 z-50 hidden group-hover:block"
+                  class="w-[300px] bg-white border-t-[3px] cart-wrapper absolute -right-[45px] top-11 z-50 hidden group-hover:block"
                 >
                   <div class="w-full h-full">
                     <div class="product-items h-[310px] overflow-y-scroll">
@@ -64,7 +65,7 @@ const handleDeleteCart = (id) => {
                           >
                             <div class="w-[65px] h-full">
                               <img
-                                :src="car.image_url"
+                                :src="getImage(car.image_url)"
                                 alt=""
                                 class="w-full h-full object-contain"
                               />
@@ -78,13 +79,13 @@ const handleDeleteCart = (id) => {
                                 </p>
                               </RouterLink>
                               <p class="price">
-                                <span class="offer-price text-qred font-600 text-[15px] ml-2">
+                                <span class="offer-price text-red font-600 text-[15px] ml-2">
                                   <b>Price:</b>
                                   ${{ car.original_price }}</span
                                 >
                               </p>
                               <p class="quantity">
-                                <span class="offer-price text-qred font-600 text-[15px] ml-2">
+                                <span class="offer-price text-red font-600 text-[15px] ml-2">
                                   <b>Quantity: </b>
                                   {{ car.quantity }}</span
                                 >

@@ -1,6 +1,6 @@
 //* LIBRARY
-import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite';
 import viteCompression from 'vite-plugin-compression';
 
 //* SETUP VITE

@@ -2,6 +2,9 @@
 //* LIBRARY
 import { useSelector } from '../../../helpers';
 
+//* UTILS
+import { getImage } from '../../../utils';
+
 // Define the 'image' prop here
 const ProductImage = useSelector((state) => state.products);
 </script>
@@ -11,7 +14,7 @@ const ProductImage = useSelector((state) => state.products);
     <div
       class="w-full h-[600px] border border-qgray-border flex justify-center items-center overflow-hidden relative mb-3"
     >
-      <img :src="ProductImage.productsDetail.image_url" alt="" />
+      <img :src="getImage(ProductImage.productsDetail.image_url)" alt="" />
     </div>
   </div>
 </template>

@@ -71,3 +71,7 @@ export const randomInRange = (min, max) => {
 export const getURIFromTemplate = (template, data) => {
   return template.replace(REGEX_IS_STRING_PARAM, (_, key) => data[key]);
 };
+
+export const getImage = (pathImage) => {
+  return `/src/assets/${pathImage}`;
+};
