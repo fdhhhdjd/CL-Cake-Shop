@@ -19,7 +19,7 @@ const props = defineProps(['orderItem']);
       <div class="w-full flex flex-col justify-start items-start space-y-8">
         <RouterLink :to="`/product/${props.orderItem.id}`">
           <span class="text-xl text-gray-800">Name</span>
-          <h3 class="text-xl dark:text-white xl:text-2xl font-semibold leading-6 text-gray-800">
+          <h3 class="text-xl xl:text-2xl font-semibold leading-6 text-gray-800">
             {{ props.orderItem.name }}
           </h3>
         </RouterLink>
@@ -39,13 +39,13 @@ const props = defineProps(['orderItem']);
         </div>
         <div class="w-full flex flex-col justify-start items-start space-y-8">
           <span class="text-xl text-gray-800">Quantity</span>
-          <p class="text-base dark:text-white xl:text-lg leading-6 text-gray-800">
+          <p class="text-xl:text-lg leading-6 text-gray-800">
             {{ props.orderItem.quantity }}
           </p>
         </div>
         <div class="w-full flex flex-col justify-start items-start space-y-8">
           <span class="text-xl text-gray-800">Price</span>
-          <p class="text-base dark:text-white xl:text-lg font-semibold leading-6 text-gray-800">
+          <p class="text-base xl:text-lg font-semibold leading-6 text-gray-800">
             ${{ props.orderItem.discounted_price || props.orderItem.original_price }}
           </p>
         </div>

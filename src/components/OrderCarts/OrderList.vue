@@ -15,9 +15,7 @@ const storeOrders = useSelector((state) => state.orders);
     <!-- Đoạn này dùng để v-for -->
     <div v-for="(order, index) in storeOrders?.order" :key="order.id" class="mb-10">
       <div class="flex justify-start item-start space-y-2 flex-col">
-        <h1
-          class="text-3xl dark:text-white lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800"
-        >
+        <h1 class="text-3xl lg:text-4xl font-semibold leading-7 lg:leading-9 text-gray-800">
           Order - {{ +index + 1 }}
         </h1>
       </div>
