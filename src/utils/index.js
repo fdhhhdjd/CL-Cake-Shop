@@ -73,5 +73,5 @@ export const getURIFromTemplate = (template, data) => {
 };
 
 export const getImage = (pathImage) => {
-  return new URL('/src/assets/logo/logo.png', import.meta.url);
+  return new URL(`/src/assets/${pathImage}`, import.meta.url);
 };
