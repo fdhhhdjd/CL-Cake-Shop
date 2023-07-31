@@ -29,6 +29,35 @@ Since Vue 3 no longer supports IE11, Element Plus does not support IE either.
 
 
 ## Page WebSite
+
+# Feature:
+
+## 1. Products
+
+- Get all products.
+
+- Get detailed products.
+
+## 2. Carts ( Local Storage)
+
+- Add to cart.
+
+- Delete each product in the cart.
+
+- Delete all carts.
+
+- Get all carts.
+
+- Increment quantity.
+
+- Decrement quantity.
+
+## 3: Orders
+
+- Create orders.
+- 
+- Get all orders.
+
 ## 1. Product List
 
 ![image](https://github.com/fdhhhdjd/CL-Cake-Shop/assets/63393170/a0024774-387f-4f2f-97b0-e89e300eba3a)
