@@ -1,7 +1,11 @@
 <script setup>
 // HELPERS
 import { useDispatch, useSelector } from '../../helpers';
+
+//* PROVIDER
 import { addToCart } from '../../providers/redux/cart/cart_thunk';
+
+//* UTILS
 import { getImage } from '../../utils';
 
 const dispatch = useDispatch();
@@ -69,9 +73,9 @@ const addToCartHandler = async (id) => {
                     </div>
 
                     <!-- Card content -->
-                    <div class="product-card-details px-[40px] pb-[40px] relative">
+                    <div class="product-card-details px-[40px] pb-[40px] relative mt-8">
                       <div
-                        class="top-60 group-hover:top-[150px] absolute w-full h-10 px-[30px] left-0 transition-all duration-300 ease-in-out"
+                        class="hidden lg:block top-60 group-hover:top-[150px] absolute w-full h-10 px-[30px] left-0 transition-all duration-300 ease-in-out"
                       >
                         <button
                           type="button"
@@ -128,6 +132,18 @@ const addToCartHandler = async (id) => {
                           >{{ product.discounted_price ? product.discounted_price : '' }}</span
                         >
                       </p>
+
+                      <div class="flex lg:hidden justify-end">
+                        <button
+                          type="button"
+                          class="bg-yellow-500 py-2 px-4 rounded-lg cursor-pointer"
+                          @click="addToCartHandler(product.id)"
+                        >
+                          <div class="flex items-center space-x-3">
+                            <span> <i class="fa-solid fa-cart-shopping"></i> </span>
+                          </div>
+                        </button>
+                      </div>
                     </div>
                     <div
                       class="flex flex-col space-y-2 absolute group-hover:right-4 -right-10 top-20 transition-all duration-300 ease-in-out"

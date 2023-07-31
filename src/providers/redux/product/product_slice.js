@@ -5,7 +5,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getAllProductInitial, getDetailProductInitial } from './product_thunk';
 
 //* CONSTANTS
-import { REDUX_NAME } from '../../../configs/constants';
+import { REDUX_NAME } from '../../../configs';
 
 const initialState = {
   loading: false,

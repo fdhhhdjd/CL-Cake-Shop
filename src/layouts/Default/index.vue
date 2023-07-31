@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import AppLayoutDefault from './default.vue';
+//* LIBRARY
 import { markRaw, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
+
+//* LAYOUT
+import AppLayoutDefault from './default.vue';
 
 const layout = ref();
 const route = useRoute();

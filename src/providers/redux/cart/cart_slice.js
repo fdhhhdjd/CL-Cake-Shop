@@ -30,13 +30,18 @@ import {
   showSuccessToast,
   showWarningToast,
 } from '../../../utils/toast';
+import {
+  saveToLocalStorage,
+  getFromLocalStorage,
+  removeFromLocalStorage,
+} from '../../../utils/localstorage';
 
 const initialState = {
   loading: false,
   error: null,
-  cart: [],
-  total: 0,
-  cost: 0,
+  cart: getFromLocalStorage('cart') || [],
+  total: getFromLocalStorage('total') || 0,
+  cost: getFromLocalStorage('cost') || 0,
 };
 
 const Carts = createSlice({
@@ -45,9 +50,9 @@ const Carts = createSlice({
   reducers: {
     // Clear all Carts
     clearCart: (state) => {
-      state.cart = [];
-      state.total = 0;
-      state.cost = 0;
+      state.cart = removeFromLocalStorage('cart') || [];
+      state.total = removeFromLocalStorage('total') || 0;
+      state.cost = removeFromLocalStorage('cost') || 0;
     },
   },
   extraReducers: {
@@ -108,11 +113,15 @@ const Carts = createSlice({
         showSuccessToast(resultMessage);
       }
 
+      saveToLocalStorage('cart', state.cart);
+
       // Calculate total
       state.total = calculationTotalCart(state.cart); // Recalculate the total quantity of items in the cart.
 
       // Calculate cost
       state.cost = calculationTotalCostCart(state.cart); // Recalculate the total cost of the items in the cart.
+
+      // Save localStorage
     },
     [addToCart.rejected]: (state, action) => {
       state.loading = false; // When the 'addToCart' async action is rejected (encountered an error), set the loading state to false.
@@ -129,6 +138,15 @@ const Carts = createSlice({
       const productId = action.payload; // Get the productId from the payload of the fulfilled action.
 
       state.cart = deleteOneId(state.cart, productId); // Update the cart state by removing the item with the specified productId.
+
+      // Save localStorage
+      saveToLocalStorage('cart', state.cart);
+
+      // Calculate total
+      state.total = calculationTotalCart(state.cart); // Recalculate the total quantity of items in the cart.
+
+      // Calculate cost
+      state.cost = calculationTotalCostCart(state.cart); // Recalculate the total cost of the items in the cart.
 
       // Show toast success
       showSuccessToast(SUCCESS.DELETE_PRODUCT);
@@ -161,6 +179,9 @@ const Carts = createSlice({
         existingProduct.quantity += 1; // Increment the quantity of the existing product in the cart by 1.
       }
 
+      // Save localStorage
+      saveToLocalStorage('cart', state.cart);
+
       // Calculate total
       state.total = calculationTotalCart(state.cart); // Recalculate the total quantity of items in the cart.
 
@@ -192,9 +213,12 @@ const Carts = createSlice({
           state.cart = deleteOneId(state.cart, productId); // If the quantity is exactly 1, remove the product from the cart.
 
           // Show toast warning
-          return showWarningToast(WARNING.DELETE_PRODUCT);
+          showWarningToast(WARNING.DELETE_PRODUCT);
         }
       }
+
+      // Save localStorage
+      saveToLocalStorage('cart', state.cart);
 
       // Calculate total
       state.total = calculationTotalCart(state.cart); // Recalculate the total quantity of items in the cart.
@@ -255,6 +279,9 @@ const Carts = createSlice({
           quantity: existingProduct.quantity,
         });
 
+        // Save localStorage
+        saveToLocalStorage('cart', state.cart);
+
         // Show toast success
         showSuccessToast(resultMessage);
       }
@@ -267,5 +294,5 @@ const Carts = createSlice({
 });
 
 const CartsSlice = Carts.reducer;
-export const { clearCart } = Carts.actions;
+export const { clearCart, dataCart } = Carts.actions;
 export default CartsSlice;

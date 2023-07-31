@@ -1,9 +1,9 @@
 //* API
 import ProductArr from '../api/json/products.json';
-import { REGEX_IS_STRING_PARAM } from '../configs';
 
 //* CONFIGS
-import { ROUND } from '../configs/constants';
+import { REGEX_IS_STRING_PARAM, ROUND, PATH_IMAGE } from '../configs';
+import { saveToLocalStorage } from './localstorage';
 
 // Round a number to 3 decimal places
 export const rouserNumber = (number) => {
@@ -36,7 +36,15 @@ export const calculationTotalCart = (cart) => {
     const price = product.discounted_price || product.original_price;
 
     // Calculate the total price by summing the price of each product multiplied by its quantity.
-    return total + price * product.quantity;
+    console.log(total, price, product.quantity);
+
+    const result = total + price * product.quantity;
+
+    // Save LocalStorage
+    saveToLocalStorage('total', result);
+
+    // Return result
+    return result;
   }, 0);
 };
 
@@ -47,7 +55,13 @@ export const calculationTotalCostCart = (cart) => {
     const price = product.original_price;
 
     // Calculate the total cost by summing the cost of each product (original price) multiplied by its quantity.
-    return total + price * product.quantity;
+    const result = total + price * product.quantity;
+
+    // Save LocalStorage
+    saveToLocalStorage('cost', result);
+
+    // Return result
+    return result;
   }, 0);
 };
 // Function to generate a random number within a specified range (inclusive).
@@ -72,6 +86,13 @@ export const getURIFromTemplate = (template, data) => {
   return template.replace(REGEX_IS_STRING_PARAM, (_, key) => data[key]);
 };
 
+// Define the getImage function that takes a pathImage parameter
 export const getImage = (pathImage) => {
-  return new URL(`/src/assets/${pathImage}`, import.meta.url);
+  // Use getURIFromTemplate function to get a template path for the image
+  const templatePathImage = getURIFromTemplate(PATH_IMAGE, {
+    pathImage,
+  });
+
+  // Create a new URL using the template path and import.meta.url
+  return new URL(templatePathImage, import.meta.url);
 };

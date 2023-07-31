@@ -4,8 +4,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 //* API
 import API_JSON from '../../../api/json/products.json';
 
-//* CONSTANTS
-import { TIME } from '../../../configs/constants';
+//* CONFIGS
+import { TIME } from '../../../configs';
 
 // Get all products
 export const getAllProductInitial = createAsyncThunk(

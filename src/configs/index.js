@@ -1,8 +1,8 @@
 //* CONFIGS
-export { default as Configs } from '../configs/configs';
+export { default as Configs } from './configs';
 
 //* CONSTANTS
-export * from '../configs/constants';
+export * from './constants';
 
 //* TITLE
 export * from './titles';
@@ -12,3 +12,6 @@ export * from './regex';
 
 //* MESSAGE
 export * from './message';
+
+//* TEMPLATE
+export * from './template';

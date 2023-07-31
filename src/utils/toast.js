@@ -4,6 +4,8 @@ import { useToast } from 'vue-toastification';
 //* CONFIGS
 import { TIME } from '../configs';
 
+let isToastValue;
+
 // Option toast Vue
 const option = {
   // Your custom options for warning toast
@@ -34,12 +36,30 @@ export const showWarningToast = (message) => {
 // It calls the 'toast.error' method, passing the 'message' as the first argument, and an object containing custom options as the second argument.
 // You can customize the appearance and behavior of the error toast by providing the necessary options in the object.
 export const showErrorToast = (message) => {
-  toast.error(message, option);
+  if (!isToastValue) {
+    toast.error(message, {
+      ...option,
+      onClose: () => {
+        isToastValue = false;
+      },
+    });
+
+    isToastValue = true;
+  }
 };
 
 // Function to show an info toast with a given message.
 // It calls the 'toast.info' method, passing the 'message' as the first argument, and an object containing custom options as the second argument.
 // You can customize the appearance and behavior of the info toast by providing the necessary options in the object.
 export const showInfoToast = (message) => {
-  toast.info(message, option);
+  if (!isToastValue) {
+    toast.info(message, {
+      ...option,
+      onClose: () => {
+        isToastValue = false;
+      },
+    });
+
+    isToastValue = true;
+  }
 };

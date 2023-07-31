@@ -5,7 +5,9 @@ import Header from '../Header/Header.vue';
 
 <template>
   <Header />
-  <slot />
+  <main class="mt-32">
+    <slot />
+  </main>
 </template>
 
 <script>

@@ -5,7 +5,7 @@ import confetti from 'canvas-confetti';
 import { randomInRange } from '.';
 
 //* CONFIGS
-import { TIME } from '../configs/constants';
+import { TIME } from '../configs';
 
 // Function to run the fireworks animation
 const runFireworks = () => {

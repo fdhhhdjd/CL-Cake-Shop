@@ -67,28 +67,18 @@ const hideOrderConfirmation = () => {
                 <tr
                   class="text-[13px] font-medium text-black bg-[#f6f6f6] whitespace-nowrap px-2 border-b default-border-bottom uppercase"
                 >
-                  <td class="py-4 pl-10 whitespace-nowrap min-w-[300px]">
-Product
-</td>
-                  <td class="py-4 whitespace-nowrap min-w-[200px] text-center">
-Price
-</td>
-                  <td class="py-4 whitespace-nowrap min-w-[200px] text-center">
-Discounted price
-</td>
-                  <td class="py-4 whitespace-nowrap min-w-[300px] text-center">
-Quantity
-</td>
-                  <td class="py-4 whitespace-nowrap min-w-[300px] text-center">
-Total
-</td>
+                  <td class="py-4 pl-10 whitespace-nowrap min-w-[300px]">Product</td>
+                  <td class="py-4 whitespace-nowrap min-w-[200px] text-center">Price</td>
+                  <td class="py-4 whitespace-nowrap min-w-[200px] text-center">Discounted price</td>
+                  <td class="py-4 whitespace-nowrap min-w-[300px] text-center">Quantity</td>
+                  <td class="py-4 whitespace-nowrap min-w-[300px] text-center">Total</td>
                   <td class="py-4 whitespace-nowrap text-right w-[114px]"></td>
                 </tr>
 
                 <!-- Data -->
                 <tr
-                  v-for="car in storeCart.cart"
-                  :key="car.id"
+                  v-for="cart in storeCart.cart"
+                  :key="cart.id"
                   class="bg-white border-b hover:bg-gray-50"
                 >
                   <td class="pl-10 py-4 w-[380px]">
@@ -97,15 +87,15 @@ Total
                         class="w-[80px] h-[80px] overflow-hidden flex justify-center items-center border border-[#ededed] relative"
                       >
                         <img
-                          :src="getImage(car.image_url)"
+                          :src="getImage(cart.image_url)"
                           alt="product"
                           class="w-full h-full object-contain"
                         />
                       </div>
                       <div class="flex-1 flex flex-col">
-                        <RouterLink :to="`/product/${car.id}`">
+                        <RouterLink :to="`/product/${cart.id}`">
                           <p class="font-medium text-[15px] text-black-500">
-                            {{ car.name }}
+                            {{ cart.name }}
                           </p>
                         </RouterLink>
                       </div>
@@ -115,9 +105,9 @@ Total
                   <td class="text-center py-4 px-2">
                     <div class="flex space-x-1 items-center justify-center">
                       <span
-                        :class="car.discounted_price ? 'line-through ' : ''"
+                        :class="cart.discounted_price ? 'line-through ' : ''"
                         class="text-[15px] font-normal"
-                        >$ {{ car.original_price }}</span
+                        >$ {{ cart.original_price }}</span
                       >
                     </div>
                   </td>
@@ -125,9 +115,9 @@ Total
                   <td class="text-center py-4 px-2">
                     <div class="flex space-x-1 items-center justify-center">
                       <span
-                        :class="car.discounted_price ? 'text-red-500' : ''"
+                        :class="cart.discounted_price ? 'text-red-500' : ''"
                         class="text-[15px] font-normal"
-                        >$ {{ car.discounted_price || car.original_price }}</span
+                        >$ {{ cart.discounted_price || cart.original_price }}</span
                       >
                     </div>
                   </td>
@@ -140,14 +130,14 @@ Total
                         <div class="flex justify-between items-center w-full">
                           <button
                             class="text-base text-gray-500"
-                            @click="handleDecrementQuantity(car.id)"
+                            @click="handleDecrementQuantity(cart.id)"
                           >
                             -
                           </button>
-                          <span>{{ car.quantity }}</span>
+                          <span>{{ cart.quantity }}</span>
                           <button
                             class="text-base text-gray-500"
-                            @click="handleIncrementQuantity(car.id)"
+                            @click="handleIncrementQuantity(cart.id)"
                           >
                             +
                           </button>
@@ -160,7 +150,9 @@ Total
                     <div class="flex space-x-1 items-center justify-center">
                       <span class="text-[15px] font-normal"
                         >${{
-                          rouserNumber((car.discounted_price || car.original_price) * car.quantity)
+                          rouserNumber(
+                            (cart.discounted_price || cart.original_price) * cart.quantity
+                          )
                         }}</span
                       >
                     </div>
@@ -169,7 +161,7 @@ Total
                   <td class="text-right py-4">
                     <div
                       class="flex space-x-1 items-center justify-center"
-                      @click="handleDeleteCart(car.id)"
+                      @click="handleDeleteCart(cart.id)"
                     >
                       <span
                         class="cursor-pointer flex p-4 rounded-full tems-center justify-center hover:bg-gray-200"
@@ -205,9 +197,7 @@ Total
                 <div class="sm:w-[370px] w-full border border-[#ededed] px-[30px] py-[26px]">
                   <div class="mb-6">
                     <div class="flex justify-between mb-6">
-                      <p class="text-[15px] font-medium text-black">
-Cost Total
-</p>
+                      <p class="text-[15px] font-medium text-black">Cost Total</p>
                       <p class="text-[15px] font-medium text-red-500">
                         ${{ rouserNumber(storeCart.cost) }}
                       </p>
@@ -217,9 +207,7 @@ Cost Total
 
                   <div class="w-full mb-3">
                     <div class="mb-[17px]">
-                      <h1 class="text-[15px] font-medium">
-Calculate Shipping
-</h1>
+                      <h1 class="text-[15px] font-medium">Calculate Shipping</h1>
                     </div>
                     <div
                       class="w-full h-[50px] border border-[#EDEDED] px-5 flex justify-between items-center mb-10"
@@ -232,9 +220,7 @@ Calculate Shipping
                     </div>
                     <div class="mb-6">
                       <div class="flex justify-between">
-                        <p class="text-[18px] font-medium text-black">
-Total
-</p>
+                        <p class="text-[18px] font-medium text-black">Total</p>
                         <p class="text-[18px] font-medium text-red-500">
                           ${{ rouserNumber(storeCart.total) }}
                         </p>
