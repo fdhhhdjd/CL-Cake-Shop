@@ -2,7 +2,7 @@
 import ProductArr from '../api/json/products.json';
 
 //* CONFIGS
-import { REGEX_IS_STRING_PARAM, ROUND, PATH_IMAGE } from '../configs';
+import { REGEX_IS_STRING_PARAM, ROUND } from '../configs';
 import { saveToLocalStorage } from './localstorage';
 
 // Round a number to 3 decimal places
@@ -88,11 +88,6 @@ export const getURIFromTemplate = (template, data) => {
 
 // Define the getImage function that takes a pathImage parameter
 export const getImage = (pathImage) => {
-  // Use getURIFromTemplate function to get a template path for the image
-  const templatePathImage = getURIFromTemplate(PATH_IMAGE, {
-    pathImage,
-  });
-
   // Create a new URL using the template path and import.meta.url
-  return new URL(templatePathImage, import.meta.url);
+  return new URL(`/src/assets/${pathImage}`, import.meta.url);
 };

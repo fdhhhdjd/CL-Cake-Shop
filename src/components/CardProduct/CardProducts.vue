@@ -32,7 +32,9 @@ const addToCartHandler = async (id) => {
         <div class="container-x mx-auto">
           <div class="section-title flex justify-between items-center mb-5">
             <div>
-              <h1 class="sm:text-3xl text-xl font-600 text-black leading-none">List Products</h1>
+              <h1 class="sm:text-3xl text-xl font-600 text-black leading-none">
+List Products
+</h1>
             </div>
             <div>
               <a href="">

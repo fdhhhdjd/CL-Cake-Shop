@@ -231,7 +231,9 @@ watch(
             >
               <div class="flex items-center space-x-6">
                 <i class="fa-solid fa-cake-candles"></i>
-                <RouterLink to="/" class="text-lg font-400">Products</RouterLink>
+                <RouterLink to="/" class="text-lg font-400">
+Products
+</RouterLink>
               </div>
             </div>
           </li>
@@ -241,7 +243,9 @@ watch(
             >
               <div class="flex items-center space-x-6">
                 <i class="fa-solid fa-cart-shopping"></i>
-                <RouterLink to="/cart" class="text-lg font-400">Cart</RouterLink>
+                <RouterLink to="/cart" class="text-lg font-400">
+Cart
+</RouterLink>
               </div>
             </div>
           </li>
@@ -251,7 +255,9 @@ watch(
             >
               <div class="flex items-center space-x-6">
                 <i class="fa-solid fa-money-bill"></i>
-                <RouterLink to="/order" class="text-lg font-400">Order</RouterLink>
+                <RouterLink to="/order" class="text-lg font-400">
+Order
+</RouterLink>
               </div>
             </div>
           </li>

@@ -12,6 +12,3 @@ export * from './regex';
 
 //* MESSAGE
 export * from './message';
-
-//* TEMPLATE
-export * from './template';
