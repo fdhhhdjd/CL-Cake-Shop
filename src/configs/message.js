@@ -19,3 +19,8 @@ export const ERROR = {
 export const INFO = {
   QUANTITY_THAN_STOCK: 'You have exceeded the stock quantity for this item!',
 };
+
+//Todo: VALIDATE
+export const VALIDATE = {
+  NOTE: 'Please limit your note to 25 characters 😥',
+};

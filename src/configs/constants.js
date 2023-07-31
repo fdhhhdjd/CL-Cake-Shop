@@ -36,3 +36,8 @@ export const MINIMUM_QUANTITY = 1;
 export const DATA_TYPE = {
   STRING: 'string',
 };
+
+//Todo: VALIDATE CHARACTER
+export const CHARACTER = {
+  _25: 25,
+};

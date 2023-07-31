@@ -3,6 +3,7 @@
 import OrderCardListProduct from './OrderCardListProduct.vue';
 import Summary from './Summary/index.vue';
 import CustomerOrder from './CustomerOrder/index.vue';
+import Note from './Note/index.vue';
 
 //* HELPERS
 import { useSelector } from '../../helpers';
@@ -27,6 +28,8 @@ const storeOrders = useSelector((state) => state.orders);
         >
           <OrderCardListProduct :order-item="order?.cart" />
 
+          <!-- Note -->
+          <Note :note-item="order" />
           <div
             class="flex justify-center flex-col md:flex-row items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8"
           >
@@ -35,7 +38,10 @@ const storeOrders = useSelector((state) => state.orders);
         </div>
 
         <!-- Customer Info Order -->
-        <CustomerOrder />
+        <div class="self-start">
+          <!-- Customer Info Order -->
+          <CustomerOrder />
+        </div>
       </div>
     </div>
   </div>

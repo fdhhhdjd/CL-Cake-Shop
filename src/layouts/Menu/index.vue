@@ -29,3 +29,9 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+.router-link-active.router-link-exact-active {
+  border-bottom: 3px solid #eab308;
+}
+</style>

@@ -1,6 +1,6 @@
 <script setup>
 //* LIBRARY
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 //* HELPER
 import { useDispatch, useSelector } from '../../helpers';
@@ -19,7 +19,14 @@ import { getImage, rouserNumber } from '../../utils/index';
 import OrderConfirmation from '../../components/Confirm/Confirmation.vue';
 import EmptyCartVue from '../../components/Empty/EmptyCart.vue';
 
+//* CONFIGS
+import { CHARACTER, VALIDATE } from '../../configs';
+
 const dispatch = useDispatch();
+
+const note = ref('');
+
+const message = ref(null);
 
 const showConfirmation = ref(false);
 
@@ -42,12 +49,23 @@ const handleDecrementQuantity = (id) => {
 
 // Show order confirmation
 const showOrderConfirmation = () => {
-  showConfirmation.value = true;
+  if (!message.value) {
+    showConfirmation.value = true;
+  }
 };
 
 // Hide order confirmation
 const hideOrderConfirmation = () => {
   showConfirmation.value = false;
+};
+
+// Handle input Note
+const handleInput = () => {
+  if (note.value.length > CHARACTER._25) {
+    message.value = VALIDATE.NOTE;
+  } else {
+    message.value = null;
+  }
 };
 </script>
 
@@ -67,21 +85,11 @@ const hideOrderConfirmation = () => {
                 <tr
                   class="text-[13px] font-medium text-black bg-[#f6f6f6] whitespace-nowrap px-2 border-b default-border-bottom uppercase"
                 >
-                  <td class="py-4 pl-10 whitespace-nowrap min-w-[300px]">
-Product
-</td>
-                  <td class="py-4 whitespace-nowrap min-w-[200px] text-center">
-Price
-</td>
-                  <td class="py-4 whitespace-nowrap min-w-[200px] text-center">
-Discounted price
-</td>
-                  <td class="py-4 whitespace-nowrap min-w-[300px] text-center">
-Quantity
-</td>
-                  <td class="py-4 whitespace-nowrap min-w-[300px] text-center">
-Total
-</td>
+                  <td class="py-4 pl-10 whitespace-nowrap min-w-[300px]">Product</td>
+                  <td class="py-4 whitespace-nowrap min-w-[200px] text-center">Price</td>
+                  <td class="py-4 whitespace-nowrap min-w-[200px] text-center">Discounted price</td>
+                  <td class="py-4 whitespace-nowrap min-w-[300px] text-center">Quantity</td>
+                  <td class="py-4 whitespace-nowrap min-w-[300px] text-center">Total</td>
                   <td class="py-4 whitespace-nowrap text-right w-[114px]"></td>
                 </tr>
 
@@ -188,72 +196,82 @@ Total
           <!-- Info Paying -->
           <div class="w-full mt-[23px]">
             <div class="container mx-auto">
-              <div class="w-full sm:flex justify-between">
-                <div class="sm:w-[270px] w-full mb-5 sm:mb-0 h-[50px] flex">
-                  <div class="flex-1 h-full">
-                    <input
-                      placeholder="Discount Code"
-                      class="border placeholder:text-sm text-sm px-6 text-dark-gray w-full h-full font-normal bg-white focus:ring-0 focus:outline-none"
-                    />
+              <div class="flex flex-wrap justify-between">
+                <div class="w-full lg:w-1/2 sm:flex justify-between mb-10">
+                  <div class="lg:w-[570px] w-full mb-5 sm:mb-0 h-full flex">
+                    <div class="flex-1 h-full">
+                      <label
+                        for="message"
+                        class="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
+                        >Note</label
+                      >
+                      <textarea
+                        id="message"
+                        v-model="note"
+                        rows="5"
+                        class="border p-2.5 placeholder:text-lg text-lg px-6 text-dark-gray w-full h-40 rounded-lg font-normal bg-white focus:outline-none"
+                        :class="
+                          message
+                            ? 'border-2 border-red-500 animate-snake'
+                            : 'focus:border-yellow-500'
+                        "
+                        placeholder="Write your thoughts here..."
+                        @input="handleInput"
+                      ></textarea>
+                      <span v-if="message" class="mt-30 text-red-500">{{ message }}</span>
+                    </div>
                   </div>
-
-                  <button class="w-[90px] h-[50px] bg-black text-white">
-                    <span class="text-sm font-semibold">Apply</span>
-                  </button>
                 </div>
-              </div>
-
-              <div class="w-full mt-[30px] flex sm:justify-end">
-                <div class="sm:w-[370px] w-full border border-[#ededed] px-[30px] py-[26px]">
-                  <div class="mb-6">
-                    <div class="flex justify-between mb-6">
-                      <p class="text-[15px] font-medium text-black">
-Cost Total
-</p>
-                      <p class="text-[15px] font-medium text-red-500">
-                        ${{ rouserNumber(storeCart.cost) }}
-                      </p>
-                    </div>
-                    <div class="w-full h-[1px] bg-[#ededed]"></div>
-                  </div>
-
-                  <div class="w-full mb-3">
-                    <div class="mb-[17px]">
-                      <h1 class="text-[15px] font-medium">
-Calculate Shipping
-</h1>
-                    </div>
-                    <div
-                      class="w-full h-[50px] border border-[#EDEDED] px-5 flex justify-between items-center mb-10"
-                    >
-                      <input
-                        type="text"
-                        placeholder="Enter Address..."
-                        class="input-field placeholder:text-sm text-sm px-6 text-dark-gray w-full h-full font-normal bg-white focus:ring-0 focus:outline-none w-full h-full"
-                      />
-                    </div>
+                <div class="mt-8 w-full lg:w-1/2 flex sm:justify-end">
+                  <div class="lg:w-[370px] w-full border border-[#ededed] px-[30px] py-[26px]">
                     <div class="mb-6">
-                      <div class="flex justify-between">
-                        <p class="text-[18px] font-medium text-black">
-Total
-</p>
-                        <p class="text-[18px] font-medium text-red-500">
-                          ${{ rouserNumber(storeCart.total) }}
+                      <div class="flex justify-between mb-6">
+                        <p class="text-[15px] font-medium text-black">Cost Total</p>
+                        <p class="text-[15px] font-medium text-red-500">
+                          ${{ rouserNumber(storeCart.cost) }}
                         </p>
                       </div>
+                      <div class="w-full h-[1px] bg-[#ededed]"></div>
                     </div>
-                  </div>
 
-                  <div class="w-full h-[50px] bg-black text-white flex justify-center items-center">
-                    <button class="text-sm font-semibold" @click="showOrderConfirmation">
-                      Proceed to Checkout
-                    </button>
-                    <Teleport to="body">
-                      <OrderConfirmation
-                        :show-confirmation="showConfirmation"
-                        :hide-order-confirmation="hideOrderConfirmation"
-                      />
-                    </Teleport>
+                    <div class="w-full mb-3">
+                      <div class="mb-[17px]">
+                        <h1 class="text-[15px] font-medium">Calculate Shipping</h1>
+                      </div>
+                      <div
+                        class="w-full h-[50px] border border-[#EDEDED] px-5 flex justify-between items-center mb-10"
+                      >
+                        <input
+                          type="text"
+                          placeholder="Enter Address..."
+                          class="input-field placeholder:text-sm text-sm px-6 text-dark-gray w-full h-full font-normal bg-white focus:ring-0 focus:outline-none w-full h-full"
+                        />
+                      </div>
+                      <div class="mb-6">
+                        <div class="flex justify-between">
+                          <p class="text-[18px] font-medium text-black">Total</p>
+                          <p class="text-[18px] font-medium text-red-500">
+                            ${{ rouserNumber(storeCart.total) }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="w-full h-[50px] bg-black text-white flex justify-center items-center"
+                    >
+                      <button class="text-sm font-semibold" @click="showOrderConfirmation">
+                        Proceed to Checkout
+                      </button>
+                      <Teleport to="body">
+                        <OrderConfirmation
+                          :show-confirmation="showConfirmation"
+                          :hide-order-confirmation="hideOrderConfirmation"
+                          :value-note="note"
+                          :value-message="message"
+                        />
+                      </Teleport>
+                    </div>
                   </div>
                 </div>
               </div>

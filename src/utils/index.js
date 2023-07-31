@@ -36,7 +36,6 @@ export const calculationTotalCart = (cart) => {
     const price = product.discounted_price || product.original_price;
 
     // Calculate the total price by summing the price of each product multiplied by its quantity.
-    console.log(total, price, product.quantity);
 
     const result = total + price * product.quantity;
 

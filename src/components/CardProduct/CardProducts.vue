@@ -32,9 +32,7 @@ const addToCartHandler = async (id) => {
         <div class="container-x mx-auto">
           <div class="section-title flex justify-between items-center mb-5">
             <div>
-              <h1 class="sm:text-3xl text-xl font-600 text-black leading-none">
-List Products
-</h1>
+              <h1 class="sm:text-3xl text-xl font-600 text-black leading-none">List Products</h1>
             </div>
             <div>
               <a href="">
@@ -70,7 +68,7 @@ List Products
                       <img
                         :src="getImage(product.image_url)"
                         alt=""
-                        class="bg-image bg-center bg-no-repeat w-9/12 mx-auto transition-all duration-200 group-hover:-translate-y-4"
+                        class="bg-image bg-center bg-no-repeat w-9/12 mx-auto transition-all duration-200 group-hover:scale-110 group-hover:shadow-lg"
                       />
                     </div>
 
