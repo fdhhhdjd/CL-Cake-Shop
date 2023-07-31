@@ -4,17 +4,14 @@
       <div class="nav">
         <ul class="nav-wrapper flex xl:space-x-10 space-x-5">
           <li class="relative">
-            <RouterLink
-              to="/"
-              class="flex items-center text-lg font-600 cursor-pointer text-qblacktext"
-            >
+            <RouterLink to="/" class="flex items-center text-lg font-600 cursor-pointer text-black">
               <span>Products</span>
             </RouterLink>
           </li>
           <li>
             <RouterLink
               to="/cart"
-              class="flex items-center text-lg font-600 cursor-pointer text-qblacktext"
+              class="flex items-center text-lg font-600 cursor-pointer text-black"
             >
               <span>Cart</span>
             </RouterLink>
@@ -22,7 +19,7 @@
           <li>
             <RouterLink
               to="/order"
-              class="flex items-center text-lg font-600 cursor-pointer text-qblacktext"
+              class="flex items-center text-lg font-600 cursor-pointer text-black"
             >
               <span>Order</span>
             </RouterLink>

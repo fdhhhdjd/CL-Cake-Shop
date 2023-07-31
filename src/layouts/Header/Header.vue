@@ -1,19 +1,21 @@
 <script setup>
-// HELPERS
+//* HELPERS
 import { useDispatch, useSelector } from '../../helpers';
 
-// PROVIDER
+//* PROVIDER
 import { deleteToCart } from '../../providers/redux/cart/cart_thunk';
-import { getDetailProductInitial } from '../../providers/redux/product/product_thunk';
+
+//* UTILS
 import { getImage } from '../../utils';
 
-// LAYOUT
+//* LAYOUT
 import MenuVue from '../Menu/index.vue';
 
 const dispatch = useDispatch();
 
 const storeCart = useSelector((state) => state.carts);
 
+// Handle delete cart
 const handleDeleteCart = (id) => {
   dispatch(deleteToCart({ productId: id }));
 };
@@ -21,7 +23,7 @@ const handleDeleteCart = (id) => {
 
 <template>
   <header class="header-section-wrapper relative">
-    <div class="w-full h-[90px] bg-white quomodo-shop-middle-bar lg:block hidden shadow-md">
+    <div class="w-full h-[90px] bg-white comodo-shop-middle-bar lg:block hidden shadow-md">
       <div class="container mx-auto h-full">
         <div class="relative h-full">
           <div class="flex justify-between items-center h-full">
@@ -73,7 +75,7 @@ const handleDeleteCart = (id) => {
                             <div class="flex-1 h-full flex flex-col justify-center">
                               <RouterLink :to="`/product/${car.id}`">
                                 <p
-                                  class="title mb-2 text-[13px] font-600 text-qblack leading-4 line-clamp-2 hover:text-blue-600"
+                                  class="title mb-2 text-[13px] font-600 text-black leading-4 line-clamp-2 hover:text-blue-600"
                                 >
                                   {{ car.name }}
                                 </p>
@@ -96,7 +98,7 @@ const handleDeleteCart = (id) => {
                             class="mt-[20px] mr-[15px] inline-flex cursor-pointer"
                             @click="handleDeleteCart(car.id)"
                           >
-                            <i class="fa-solid fa-xmark" />
+                            <i class="fa-solid fa-mark" />
                           </span>
                         </li>
                       </ul>
@@ -108,7 +110,7 @@ const handleDeleteCart = (id) => {
                     <div class="flex justify-center py-[15px]">
                       <p class="text-[13px] font-500 text-qgray">
                         Get Return within
-                        <span class="text-qblack">30 days</span>
+                        <span class="text-black">30 days</span>
                       </p>
                     </div>
                   </div>
@@ -173,7 +175,7 @@ const handleDeleteCart = (id) => {
             </span>
           </RouterLink>
           <span
-            class="w-[18px] h-[18px] rounded-full absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px] bg-qyellow text-qblack"
+            class="w-[18px] h-[18px] rounded-full absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px] bg-yellow text-black"
             >{{ storeCart.cart.length || 0 }}</span
           >
         </div>
@@ -181,7 +183,7 @@ const handleDeleteCart = (id) => {
     </div>
 
     <div
-      class="nav-widget-wrapper w-full h-[60px] relative z-30 bg-qyellow quomodo-shop-nav-bar lg:block hidden"
+      class="nav-widget-wrapper w-full h-[60px] relative z-30 bg-yellow comodo-shop-nav-bar lg:block hidden"
     >
       <div class="container mx-auto h-full">
         <div class="w-full h-full relative" />
