@@ -132,9 +132,13 @@ const decreaseQuantity = () => {
         <div class="w-full flex items-center h-[50px] space-x-[10px] mb-[30px]">
           <div class="w-[120px] h-full px-[26px] flex items-center border border-gray">
             <div class="flex justify-between items-center w-full">
-              <button class="text-base text-gray-500" @click="decreaseQuantity">-</button>
+              <button class="text-base text-gray-500" @click="decreaseQuantity">
+-
+</button>
               <span> {{ quantity }} </span>
-              <button class="text-base text-gray-500" @click="increaseQuantity">+</button>
+              <button class="text-base text-gray-500" @click="increaseQuantity">
++
+</button>
             </div>
           </div>
 
