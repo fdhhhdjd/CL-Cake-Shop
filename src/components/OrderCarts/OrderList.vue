@@ -38,7 +38,7 @@ const storeOrders = useSelector((state) => state.orders);
         </div>
 
         <!-- Customer Info Order -->
-        <div class="self-start">
+        <div class="lg:self-start">
           <!-- Customer Info Order -->
           <CustomerOrder />
         </div>

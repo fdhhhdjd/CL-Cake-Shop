@@ -49,7 +49,10 @@ const props = defineProps(['orderItem']);
         <div class="w-full flex flex-col justify-start items-start space-y-8">
           <span class="text-xl text-yellow-500">Price</span>
           <p class="text-base xl:text-lg font-semibold leading-6 text-gray-800">
-            ${{ props.orderItem.discounted_price || props.orderItem.original_price }}
+            ${{
+              (props.orderItem.discounted_price || props.orderItem.original_price) *
+              props.orderItem.quantity
+            }}
           </p>
         </div>
       </div>

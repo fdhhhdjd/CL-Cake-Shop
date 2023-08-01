@@ -16,19 +16,7 @@ const resultProduct = useSelector((state) => state.products);
         <div class="container-x mx-auto">
           <div class="section-title flex justify-between items-center mb-5">
             <div>
-              <h1 class="sm:text-3xl text-xl font-600 text-black leading-none">
-List Products
-</h1>
-            </div>
-            <div>
-              <a href="">
-                <div class="flex space-x-2 items-center">
-                  <p class="text-base font-600 text-black">View More</p>
-                  <span class="animate-right-dir">
-                    <i class="fa-solid fa-arrow-right" />
-                  </span>
-                </div>
-              </a>
+              <h1 class="sm:text-3xl text-xl font-600 text-black leading-none">List Products</h1>
             </div>
           </div>
 
