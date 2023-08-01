@@ -66,6 +66,7 @@ module.exports = {
     'array-bracket-newline': ['error', 'consistent'],
 
     'vue/multi-word-component-names': 'off',
+    'vue/no-setup-props-destructure': 'off',
     'comma-dangle': 'off',
     'arrow-parens': 'off',
     'lines-around-comment': 'off',

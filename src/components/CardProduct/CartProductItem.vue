@@ -13,7 +13,6 @@ import { useDispatch } from '../../helpers';
 
 const props = defineProps(['product']);
 
-// eslint-disable-next-line vue/no-setup-props-destructure
 const { product } = props;
 
 const dispatch = useDispatch();

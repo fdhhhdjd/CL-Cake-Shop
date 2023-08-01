@@ -3,8 +3,8 @@ import Toast, { POSITION } from 'vue-toastification';
 import { createApp } from 'vue';
 
 //* IMPORT CSS GLOBAL
-import './index.css';
 import 'vue-toastification/dist/index.css';
+import './index.css';
 
 //* IMPORT FILE MAIN VUE
 import App from './App.vue';

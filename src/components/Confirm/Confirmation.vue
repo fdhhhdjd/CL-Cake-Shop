@@ -12,6 +12,9 @@ import router from '../../routers/index';
 import { createOrders } from '../../providers/redux/order/order_thunk';
 import { clearCart } from '../../providers/redux/cart/cart_slice';
 
+//* UTILS
+import runFireworks from '../../utils/fireWorks';
+
 // Take props for page
 const props = defineProps(['showConfirmation', 'hideOrderConfirmation', 'valueNote']);
 
@@ -32,6 +35,9 @@ const confirmOrder = async () => {
 
   // Redirect if checkout success
   router.push('/thankyou');
+
+  // Run fireworks
+  runFireworks();
 
   // Hide Popup confirm
   props.hideOrderConfirmation();
@@ -68,9 +74,7 @@ const handleClickOutside = (event) => {
         class="bg-white p-16 rounded shadow-md"
         @click.stop
       >
-        <h2 class="text-2xl font-bold mb-4">
-Confirm Your Orders
-</h2>
+        <h2 class="text-2xl font-bold mb-4">Confirm Your Orders</h2>
         <span>Please review your order 😊</span>
         <div class="flex space-x-4 mt-4">
           <button class="px-4 py-2 bg-green-500 text-white rounded" @click="confirmOrder">

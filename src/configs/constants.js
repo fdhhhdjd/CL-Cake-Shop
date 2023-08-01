@@ -14,6 +14,7 @@ export const REDUX_NAME = {
 // Todo: TIME
 export const TIME = {
   _1_SECOND: 1000,
+  _3_SECOND: 3 * 1000,
   _5_SECOND: 5 * 1000,
   _8_SECOND: 8 * 1000,
 };
@@ -37,7 +38,17 @@ export const DATA_TYPE = {
   STRING: 'string',
 };
 
-//Todo: VALIDATE CHARACTER
+// Todo: VALIDATE CHARACTER
 export const CHARACTER = {
   _25: 25,
+};
+
+// TYPE TOAST
+export const TOAST = {
+  BOTTOM_CENTER: 'bottom-center',
+  TOP_RIGHT: 'top-right',
+  THEME: {
+    DARK: 'dark',
+    LIGHT: 'light',
+  },
 };

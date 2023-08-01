@@ -3,6 +3,7 @@ export const SUCCESS = {
   ADD_TO_CART: 'Added ${nameProduct} to Cart Successfully!',
   ADD_INCREASE_CART: 'Increased ${nameProduct} quantity to ${quantity}!',
   DELETE_PRODUCT: 'Delete to cart successfully!',
+  DELETE_ALL_CART: 'Delete all cart successfully!',
 };
 
 // Todo: WARNING
