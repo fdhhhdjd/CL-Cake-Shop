@@ -45,7 +45,6 @@ watch(
     handleCloseMenu();
   }
 );
-console.log(route);
 </script>
 
 <template>
@@ -182,11 +181,11 @@ console.log(route);
             <img class="w-[80px]" src="../../assets/logo/logo.png" alt="logo" />
           </div>
         </RouterLink>
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-6">
           <!-- Cart -->
           <div class="cart relative cursor-pointer">
             <RouterLink to="/cart">
-              <span class="text-lg lg:text-[25px]">
+              <span class="text-2xl">
                 <i class="fa-solid fa-cart-shopping" />
               </span>
             </RouterLink>
@@ -200,7 +199,7 @@ console.log(route);
           <!-- Order -->
           <div class="cart relative cursor-pointer">
             <RouterLink to="/order">
-              <span class="text-lg lg:text-[25px]">
+              <span class="text-2xl">
                 <i class="fa-solid fa-file-invoice"></i>
               </span>
             </RouterLink>

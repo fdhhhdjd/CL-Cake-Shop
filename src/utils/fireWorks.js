@@ -11,10 +11,8 @@ import { TIME } from '../configs';
 const runFireworks = () => {
   // Set the duration of the fireworks animation to 8 seconds
   const duration = TIME._8_SECOND;
-
   // Calculate the end time of the animation by adding the duration to the current time
   const animationEnd = Date.now() + duration;
-
   // Default configuration options for the confetti animation
   const defaults = { startVelocity: 70, spread: 500, ticks: 1000, zIndex: 999999 };
 

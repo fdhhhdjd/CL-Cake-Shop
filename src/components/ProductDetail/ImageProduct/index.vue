@@ -12,9 +12,13 @@ const ProductImage = useSelector((state) => state.products);
 <template>
   <div class="w-full">
     <div
-      class="w-full h-[600px] border border-qgray-border flex justify-center items-center overflow-hidden relative mb-3"
+      class="w-full h-[600px] border border-gray-border flex justify-center items-center overflow-hidden relative mb-3"
     >
-      <img :src="getImage(ProductImage.productsDetail.image_url)" alt="" />
+      <img
+        :src="getImage(ProductImage.productsDetail.image_url)"
+        alt=""
+        class="transition-all duration-200 hover:scale-110"
+      />
     </div>
   </div>
 </template>
