@@ -13,15 +13,19 @@ import { getAllProductInitial } from '../../providers/redux/product/product_thun
 
 const dispatch = useDispatch();
 
-// Get all products
-dispatch(getAllProductInitial());
+const storeProduct = useSelector((state) => state.products);
 
-const product = useSelector((state) => state.products);
+// If data store equal [] run action dispatch
+const checkDataProductsInStore = !storeProduct.value.products.length;
+
+if (checkDataProductsInStore) {
+  dispatch(getAllProductInitial());
+}
 </script>
 
 <template>
   <!-- Loading -->
-  <LoadingVue v-if="product.loading" />
+  <LoadingVue v-if="storeProduct.loading" />
 
   <!-- List Product -->
   <CardProductsVue v-else />

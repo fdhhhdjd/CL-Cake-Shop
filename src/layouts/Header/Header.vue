@@ -23,8 +23,6 @@ const storeCart = useSelector((state) => state.carts);
 
 const storeOrders = useSelector((state) => state.orders);
 
-console.log(storeOrders);
-
 const isActiveMenu = ref(false);
 
 const handleActiveMenu = () => {
@@ -56,7 +54,7 @@ watch(
             <!-- Logo -->
             <RouterLink to="/">
               <div class="cursor-pointer">
-                <img class="w-[110px]" :src="getImage('logo/logo.png')" alt="logo" />
+                <img class="w-[90px]" :src="getImage('logo/logo.png')" alt="logo" />
               </div>
             </RouterLink>
             <!-- Menu -->
@@ -162,7 +160,7 @@ watch(
       </div>
     </div>
 
-    <div class="lg:hidden block w-full h-[60px] bg-white">
+    <div class="lg:hidden block w-full h-[80px] bg-white shadow-md">
       <div class="w-full h-full flex justify-between items-center px-5">
         <div @click="handleActiveMenu">
           <svg
@@ -176,9 +174,9 @@ watch(
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
           </svg>
         </div>
-        <RouterLink to="/">
-          <div class="cursor-pointer">
-            <img class="w-[80px]" src="../../assets/logo/logo.png" alt="logo" />
+        <RouterLink to="/" class="block h-full">
+          <div class="cursor-pointer h-full">
+            <img class="w-[80px] h-full" src="../../assets/logo/logo.png" alt="logo" />
           </div>
         </RouterLink>
         <div class="flex items-center gap-6">

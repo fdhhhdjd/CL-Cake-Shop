@@ -10,7 +10,7 @@ import { REDUX_NAME } from '../../../configs';
 const initialState = {
   loading: false,
   error: null,
-  products: null,
+  products: [],
   productsDetail: null,
 };
 
