@@ -258,6 +258,9 @@ const Carts = createSlice({
           nameProduct: productToAdd.name,
         });
 
+        // Save localStorage
+        saveToLocalStorage('cart', state.cart);
+
         // Show toast success
         showSuccessToast(resultMessage);
       } else {

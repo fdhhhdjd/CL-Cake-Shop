@@ -2,7 +2,9 @@
   <div
     class="bg-gray-50 w-full xl:w-96 flex justify-between items-center md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col"
   >
-    <h3 class="text-xl font-semibold leading-5 text-gray-800">Customer</h3>
+    <h3 class="text-xl font-semibold leading-5 text-gray-800">
+Customer
+</h3>
     <div
       class="flex flex-col md:flex-row xl:flex-col justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0"
     >
@@ -16,8 +18,12 @@
             class="w-20"
           />
           <div class="flex justify-start items-start flex-col space-y-2">
-            <p class="text-base font-semibold leading-4 text-left text-gray-800">Nguyen Tien Tai</p>
-            <p class="text-sm leading-5 text-gray-600">10 Previous Orders</p>
+            <p class="text-base font-semibold leading-4 text-left text-gray-800">
+Nguyen Tien Tai
+</p>
+            <p class="text-sm leading-5 text-gray-600">
+10 Previous Orders
+</p>
           </div>
         </div>
 
@@ -34,7 +40,9 @@
             src="https://tuk-cdn.s3.amazonaws.com/can-uploader/order-summary-3-svg1dark.svg"
             alt="email"
           />
-          <p class="cursor-pointer text-sm leading-5">nguyentientai10@gmail.com</p>
+          <p class="cursor-pointer text-sm leading-5">
+nguyentientai10@gmail.com
+</p>
         </div>
       </div>
       <div class="flex justify-between xl:h-full items-stretch w-full flex-col mt-6 md:mt-0">

@@ -50,11 +50,21 @@ const handleRemoveAllCart = () => {
         <tr
           class="text-[13px] font-medium text-black bg-[#f6f6f6] whitespace-nowrap px-2 border-b default-border-bottom uppercase"
         >
-          <td class="py-4 pl-10 whitespace-nowrap min-w-[300px]">Product</td>
-          <td class="py-4 whitespace-nowrap min-w-[200px] text-center">Price</td>
-          <td class="py-4 whitespace-nowrap min-w-[200px] text-center">Discounted price</td>
-          <td class="py-4 whitespace-nowrap min-w-[300px] text-center">Quantity</td>
-          <td class="py-4 whitespace-nowrap min-w-[300px] text-center">Total</td>
+          <td class="py-4 pl-10 whitespace-nowrap min-w-[300px]">
+Product
+</td>
+          <td class="py-4 whitespace-nowrap min-w-[200px] text-center">
+Price
+</td>
+          <td class="py-4 whitespace-nowrap min-w-[200px] text-center">
+Discounted price
+</td>
+          <td class="py-4 whitespace-nowrap min-w-[300px] text-center">
+Quantity
+</td>
+          <td class="py-4 whitespace-nowrap min-w-[300px] text-center">
+Total
+</td>
           <td class="py-4 pr-5 whitespace-nowrap text-center w-[200px]">
             <button
               class="flex items-center justify-center font-semibold text-red-500 w-full text-sm"

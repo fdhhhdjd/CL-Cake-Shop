@@ -75,7 +75,9 @@ const handleInput = () => {
           <div class="lg:w-[370px] w-full border border-[#ededed] px-[30px] py-[26px]">
             <div class="mb-6">
               <div class="flex justify-between mb-6">
-                <p class="text-[15px] font-medium text-black">Cost Total</p>
+                <p class="text-[15px] font-medium text-black">
+Cost Total
+</p>
                 <p class="text-[15px] font-medium text-red-500">
                   ${{ rouserNumber(storeCart.cost) }}
                 </p>
@@ -85,7 +87,9 @@ const handleInput = () => {
 
             <div class="w-full mb-3">
               <div class="mb-[17px]">
-                <h1 class="text-[15px] font-medium">Calculate Shipping</h1>
+                <h1 class="text-[15px] font-medium">
+Calculate Shipping
+</h1>
               </div>
               <div
                 class="w-full h-[50px] border border-[#EDEDED] px-5 flex justify-between items-center mb-10"
@@ -98,7 +102,9 @@ const handleInput = () => {
               </div>
               <div class="mb-6">
                 <div class="flex justify-between">
-                  <p class="text-[18px] font-medium text-black">Total</p>
+                  <p class="text-[18px] font-medium text-black">
+Total
+</p>
                   <p class="text-[18px] font-medium text-red-500">
                     ${{ rouserNumber(storeCart.total) }}
                   </p>

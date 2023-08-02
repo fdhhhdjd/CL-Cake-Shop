@@ -23,7 +23,9 @@
           d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
         />
       </svg>
-      <h1 class="text-6xl font-bold mb-2">Thank You!</h1>
+      <h1 class="text-6xl font-bold mb-2">
+Thank You!
+</h1>
       <p class="mb-6 mt-10">
         Thank you for your interest! Check your email for a link to the guide.
       </p>

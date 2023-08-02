@@ -74,7 +74,9 @@ const handleClickOutside = (event) => {
         class="bg-white p-16 rounded shadow-md"
         @click.stop
       >
-        <h2 class="text-2xl font-bold mb-4">Confirm Your Orders</h2>
+        <h2 class="text-2xl font-bold mb-4">
+Confirm Your Orders
+</h2>
         <span>Please review your order 😊</span>
         <div class="flex space-x-4 mt-4">
           <button class="px-4 py-2 bg-green-500 text-white rounded" @click="confirmOrder">
