@@ -258,9 +258,6 @@ const Carts = createSlice({
           nameProduct: productToAdd.name,
         });
 
-        // Save localStorage
-        saveToLocalStorage('cart', state.cart);
-
         // Show toast success
         showSuccessToast(resultMessage);
       } else {
@@ -282,12 +279,18 @@ const Carts = createSlice({
           quantity: existingProduct.quantity,
         });
 
-        // Save localStorage
-        saveToLocalStorage('cart', state.cart);
-
         // Show toast success
         showSuccessToast(resultMessage);
       }
+
+      // Save localStorage
+      saveToLocalStorage('cart', state.cart);
+
+      // Calculate total
+      state.total = calculationTotalCart(state.cart); // Recalculate the total quantity of items in the cart.
+
+      // Calculate cost
+      state.cost = calculationTotalCostCart(state.cart); // Recalculate the total cost of the items in the cart.
     },
     [addToCartMutingQuantity.rejected]: (state, action) => {
       state.loading = false; // When the 'addToCartMutingQuantity' async action is rejected (encountered an error), set the loading state to false.
